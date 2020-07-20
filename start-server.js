@@ -1,8 +1,20 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const ConsignationSalesAgreement = require('./src/ConsignationSalesAgreement');
 const ConsignationSalesForm = require('./src/ConsignationSalesForm');
+const SelectCompanyForm = require('./SelectCompanyForm');
 
 const app = express();
+
+app.get('/', async (req, res) => {
+  const page = SelectCompanyForm();
+  res.send(await page.to('text/html'));
+});
+
+app.post('/', bodyParser.urlencoded({ extended: true }), (req, res) => {
+  res.redirect(`/${req.body.companyName}`);
+});
 
 app.get('/:company', async (req, res) => {
   res.redirect(`/${req.params.company}/consignation`);

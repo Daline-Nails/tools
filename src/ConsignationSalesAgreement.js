@@ -1,6 +1,6 @@
 const HandleBars = require('handlebars');
 const root = require('app-root-path');
-const readFile = require('./read-file');
+const readFile = require(`${root}/read-file`);
 
 module.exports = querystring => {
   return {
