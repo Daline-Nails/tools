@@ -46,6 +46,10 @@
       .inputs-controls > *:not(:first-child) {
         margin-left: 5px;
       }
+
+      fieldset {
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -54,54 +58,102 @@
     <h1>Consignation Sales Form</h1>
 
     <form>
-      <div class="input-wrapper">
-        <label class="input-label" for="sellerLegalName">Seller Legal Name:</label>
-        <input
-          class="input-field"
-          autofocus
-          type="text"
-          name="sellerLegalName"
-          id="sellerLegalName"
-          value="{{sellerLegalName}}"
-          required
-        >
-      </div>
-      <div class="input-wrapper">
-        <label class="input-label" for="sellerTradingName">Seller Trading Name:</label>
-        <input
-          class="input-field"
-          autofocus
-          type="text"
-          name="sellerTradingName"
-          id="sellerTradingName"
-          value="{{sellerTradingName}}"
-          required
-        >
-      </div>
-      <div class="input-wrapper">
-        <label class="input-label" for="sellerABN">Seller ABN:</label>
-        <input
-          class="input-field"
-          autofocus
-          type="text"
-          name="sellerABN"
-          id="sellerABN"
-          value="{{sellerABN}}"
-          required
-        >
-      </div>
-      <div class="input-wrapper">
-        <label class="input-label" for="sellerAddress">Seller Address:</label>
-        <input
-          class="input-field"
-          autofocus
-          type="text"
-          name="sellerAddress"
-          id="sellerAddress"
-          value="{{sellerAddress}}"
-          required
-        >
-      </div>
+      <fieldset>
+        <legend>Seller</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="sellerLegalName">Legal Name:</label>
+          <input
+            class="input-field"
+            autofocus
+            type="text"
+            placeholder="Beauty Group Pty Ltd"
+            name="sellerLegalName"
+            id="sellerLegalName"
+            value="{{sellerLegalName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="sellerTradingName">Trading Name:</label>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="Beauty Me"
+            name="sellerTradingName"
+            id="sellerTradingName"
+            value="{{sellerTradingName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="sellerABN">ABN:</label>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="00 000 000 000"
+            name="sellerABN"
+            id="sellerABN"
+            value="{{sellerABN}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="sellerAddress">Address:</label>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="1/1 Some Road, Sydney, NSW"
+            name="sellerAddress"
+            id="sellerAddress"
+            value="{{sellerAddress}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Product</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="productName">Product Name:</label>
+          <input
+            type="text"
+            class="input-field"
+            placeholder="Daline Nails Repair & Growth"
+            name="productName"
+            id="productName"
+            value="{{productName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="productUnits">Units:</label>
+          <input
+            type="number"
+            class="input-field"
+            placeholder="20, 30, 40"
+            step="1"
+            min="1"
+            name="productUnits"
+            id="productUnits"
+            value="{{productUnits}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Other</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="agreementStartDate">Agreement Start Date:</label>
+          <input
+            type="text"
+            placeholder="Jan 01, 2020"
+            class="input-field"
+            name="agreementStartDate"
+            id="agreementStartDate"
+            value="{{agreementStartDate}}"
+            required
+          >
+        </div>
+      </fieldset>
       <div class="inputs-controls">
         <button class="input-btn primary" name="edit" value="y">Save</button>
         {{#if edit}}
