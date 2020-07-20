@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "node start-server.js"
+    "start": "pm2 start start-server.js",
+    "dev": "node start-server.js"
   },
   "dependencies": {
     "app-root-path": "3.0.0",
