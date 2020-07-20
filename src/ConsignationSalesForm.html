@@ -68,7 +68,7 @@
             placeholder="Beauty Group Pty Ltd"
             name="sellerLegalName"
             id="sellerLegalName"
-            value="{{sellerLegalName}}"
+            value="{{querystring.sellerLegalName}}"
             required
           >
         </div>
@@ -80,7 +80,7 @@
             placeholder="Beauty Me"
             name="sellerTradingName"
             id="sellerTradingName"
-            value="{{sellerTradingName}}"
+            value="{{querystring.sellerTradingName}}"
             required
           >
         </div>
@@ -92,7 +92,7 @@
             placeholder="00 000 000 000"
             name="sellerABN"
             id="sellerABN"
-            value="{{sellerABN}}"
+            value="{{querystring.sellerABN}}"
             required
           >
         </div>
@@ -104,7 +104,7 @@
             placeholder="1/1 Some Road, Sydney, NSW"
             name="sellerAddress"
             id="sellerAddress"
-            value="{{sellerAddress}}"
+            value="{{querystring.sellerAddress}}"
             required
           >
         </div>
@@ -113,15 +113,18 @@
         <legend>Product</legend>
         <div class="input-wrapper">
           <label class="input-label" for="productName">Product Name:</label>
-          <input
-            type="text"
-            class="input-field"
-            placeholder="Daline Nails Repair & Growth"
+          <select
+            style="width: 100%"
+            class="input-field-select"
             name="productName"
             id="productName"
-            value="{{productName}}"
+            onchange="calculatePricePerUnit()"
             required
           >
+            {{#each availableProducts}}
+              <option value="{{text}}" data-productid="{{productId}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+            {{/each}}
+          </select>
         </div>
         <div class="input-wrapper">
           <label class="input-label" for="productUnits">Units:</label>
@@ -129,11 +132,12 @@
             type="number"
             class="input-field"
             placeholder="20, 30, 40"
-            step="1"
-            min="1"
+            step="10"
+            min="20"
             name="productUnits"
             id="productUnits"
-            value="{{productUnits}}"
+            value="{{querystring.productUnits}}"
+            onchange="calculatePricePerUnit()"
             required
           >
         </div>
@@ -146,11 +150,40 @@
             min="1"
             name="pricePerUnit"
             id="pricePerUnit"
-            value="{{pricePerUnit}}"
+            value="{{querystring.pricePerUnit}}"
             required
           >
         </div>
       </fieldset>
+      <script>
+        function calculatePricePerUnit() {
+          const selectedProduct = document.querySelector('[name="productName"]');
+          const productId = selectedProduct.options[selectedProduct.selectedIndex].getAttribute('data-productid');
+
+          const productUnits = +(document.querySelector('[name="productUnits"]').value || '0');
+
+          if (productId === '1x') {
+            if (productUnits >= 20) {
+              document.querySelector('[name="pricePerUnit"]').value = '23';
+            }
+            if (productUnits >= 50) {
+              document.querySelector('[name="pricePerUnit"]').value = '22';
+            }
+            if (productUnits >= 100) {
+              document.querySelector('[name="pricePerUnit"]').value = '21';
+            }
+          }
+
+          if (productId === '5x') {
+            if (productUnits >= 20) {
+              document.querySelector('[name="pricePerUnit"]').value = '95';
+            }
+            if (productUnits >= 50) {
+              document.querySelector('[name="pricePerUnit"]').value = '90';
+            }
+          }
+        }
+      </script>
       <fieldset>
         <legend>Other</legend>
         <div class="input-wrapper">
@@ -161,14 +194,14 @@
             class="input-field"
             name="agreementStartDate"
             id="agreementStartDate"
-            value="{{agreementStartDate}}"
+            value="{{querystring.agreementStartDate}}"
             required
           >
         </div>
       </fieldset>
       <div class="inputs-controls">
         <button class="input-btn primary" name="edit" value="y">Save</button>
-        {{#if edit}}
+        {{#if querystring.edit}}
           <button class="input-btn">Generate Document</button>
         {{/if}}
       </div>

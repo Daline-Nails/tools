@@ -26,14 +26,30 @@ app.get('/:company', async (req, res) => {
 app.get('/:company/consignation', async (req, res) => {
   let page = ConsignationSalesForm(req.query);
 
+  const AVAILABLE_PRODUCTS = [{
+    text: 'Daline Nails Repair & Growth',
+    productId: '1x',
+    selected: req.query.productName === 'Daline Nails Repair & Growth'
+  }, {
+    text: 'Daline Nails Repair & Growth - Buy 4 Get 5',
+    productId: '5x',
+    selected: req.query.productName === 'Daline Nails Repair & Growth - Buy 4 Get 5'
+  }];
+
   if (Object.keys(req.query).length === 0) {
-    page = ConsignationSalesForm(req.query);
+    page = ConsignationSalesForm({
+      querystring: req.query,
+      availableProducts: AVAILABLE_PRODUCTS
+    });
     res.send(await page.to('text/html'));
     return;
   }
 
   if (req.query.edit === 'y') {
-    page = ConsignationSalesForm(req.query);
+    page = ConsignationSalesForm({
+      querystring: req.query,
+      availableProducts: AVAILABLE_PRODUCTS
+    });
     res.send(await page.to('text/html'));
     return;
   }
