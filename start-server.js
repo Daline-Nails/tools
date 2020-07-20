@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const root = require('app-root-path');
 
 const ConsignationSalesAgreement = require('./src/ConsignationSalesAgreement');
 const ConsignationSalesForm = require('./src/ConsignationSalesForm');
 const SelectCompanyForm = require('./SelectCompanyForm');
+
+const readFile = require(`${root}/read-file`);
 
 const app = express();
 
@@ -35,7 +38,10 @@ app.get('/:company/consignation', async (req, res) => {
     return;
   }
 
-  page = ConsignationSalesAgreement(req.query);
+  page = ConsignationSalesAgreement({
+    querystring: req.query,
+    manufacturerSignatureBase64: await readFile(`${root}/src/signature.base64`, { encoding: 'UTF-8' }),
+  });
   res.send(await page.to('text/html'));
   return;
 });
