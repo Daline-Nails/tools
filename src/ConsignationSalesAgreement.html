@@ -63,163 +63,190 @@
         content: counters(main-counter, ".") ". ";
         counter-increment: main-counter
       }
+
+      @media print {
+        section {
+          page-break-inside: avoid;
+        }
+        body {
+          font-size: 80%;
+        }
+      }
     </style>
   </head>
   <body>
     <img style="display: block; margin: auto auto;" src="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/logo.png">
     <h1 style="text-align: center;">Consignation Sales Form</h1>
 
-    <h2>1) THE PARTIES</h2>
+    <section>
+      <h2>1) THE PARTIES</h2>
 
-    Agreement is made and effective between:
+      Agreement is made and effective between:
 
-    <p>
-      <b>{{querystring.sellerLegalName}}</b>, trading as <b>{{querystring.sellerTradingName}}</b><br>
-      <b>ABN</b>: {{querystring.sellerABN}}<br>
-      <b>Address</b>: {{querystring.sellerAddress}}
-    </p>
-
-    and
-
-    <p>
-      <b>Daline de Jesus Paulo</b>, trading as <b>Daline Nails</b><br>
-      <b>ABN</b>: 59 801 630 489<br>
-      <b>Address</b>: 1/673-675 Pittwater Road, Dee Why, NSW
-    </p>
-
-    <h2>2) DEFINITIONS</h2>
-
-    <p>
-      <b>THE MANUFACTURER</b> is the authorized representative from the party responsible to create the packaging, labelling, and production of <b>{{querystring.productName}}</b>.
-    </p>
-    <p>
-      <b>SELLER</b> owns a business called {{querystring.sellerTradingName}} and is set the privilege of a special condition of custody and sales of <b>{{querystring.productName}}</b> for a determined period of time without buying the products.
-    </p>
-    <p>
-      THE MANUFACTURER and SELLER have agreed upon a consignation sales agreement as follows:
-    </p>
-
-    <h2>
-      ARTICLE 1 – THE SUBJECT
-    </h2>
-
-    <p>
-      <ol class="article">
-        <li>
-          THE GOODS are subject to a consignation sales agreement of <b>{{querystring.productUnits}}</b> units of <b>{{querystring.productName}}</b> from THE MANUFACTURER stock.
-          <ol class="article">
-            <li>THE GOODS will be stored at Seller's store located in the address <b>{{querystring.sellerAddress}}</b></li>
-            <li>
-              Seller binds itself to:
-              <ol class="article">
-                <li>Maintain good condition of the goods. Damage costs associated with the improper handling of the goods will be under the Seller responsibility.</li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-      </ol>
-    </p>
-
-    <h2>ARTICLE 2 – THE GOODS</h2>
-
-    <p>
-      <ol class="article" style="counter-reset: main-counter 1">
-        <li>
-          The goods consist of {{querystring.productUnits}} units of <b>{{querystring.productName}}</b> as described in the addendum.
-        </li>
-      </ol>
-    </p>
-
-    <h2>
-      ARTICLE 3 – CONDITIONS OF SALE/PRICE
-    </h2>
-
-    <p>
-      <ol class="article" style="counter-reset: main-counter 2">
-        <li>
-          The conditions of sale are the following:
-          <ol class="article">
-            <li>
-              The manufacturer and Seller have agreed upon a maximum profit of 100% on the price list offered by the manufacturer
-            </li>
-            <li>
-              The total of sales should be declared every Saturday of each week, by message on the phone 0401603068 or by e-mail to dalinenails@gmail.com. Together with the sales declared on Monday, the amount should be transferred to the account: <b>062–155  1070 9755</b>
-              <ol class="article">
-                <li><b>BSB:</b> 062–155 <b>Acc:</b> 1070 975</li>
-              </ol>
-            </li>
-            <li>Accounts not paid within 2 weeks of the sale are subject to a 5% weekly finance charge</li>
-          </ol>
-        </li>
-      </ol>
-    </p>
-
-    <h2>ARTICLE 4 – LIABILITY</h2>
-
-    <p>
-      <ol class="article" style="counter-reset: main-counter 3">
-        <li>
-          The liability terms are the following:
-          <ol class="article">
-            <li>The Seller will bear the physical and juridical responsibility of the goods as soon as they arrive in their location.</li>
-            <li>The manufacturer shall not be liable for the loss, damage, or expectations regarding the effectiveness of the product other than what is specified in the packaging or online marketing.</li>
-          </ol>
-        </li>
-      </ol>
-    </p>
-
-    <h2>ARTICLE 5 – DURATION</h2>
-
-    <p>
-      <ol class="article" style="counter-reset: main-counter 4">
-        <li>
-          The duration terms are the following:
-          <ol class="article">
-            <li>This agreement is effective at the date of signature and is valid for one month (the “Initial Term”).</li>
-            <li>This agreement is automatically renewable on a monthly basis after the expiration of the Initial Term. After the Initial Term, either The manufacturer or the Seller may cancel this Agreement by providing one (1) week written notice of termination to the other party.</li>
-          </ol>
-        </li>
-      </ol>
-    </p>
-
-    <h2>ARTICLE 6 – TERMINATION</h2>
-
-    <p>
-      <ol class="article" style="counter-reset: main-counter 5">
-        <li>
-          The termination terms are the following:
-          <ol class="article">
-            <li>Any material breach of the terms of this agreement will give to the injured party the right to give notice to the other party to fulfill its obligations.</li>
-            <li>If such notice is not fulfilled 30 days after notification, the injured party may terminate the Agreement immediately by registered mail.</li>
-            <li>This Agreement is signed by The Manufacturer and Seller. The rights and obligations agreed upon the scope of this agreement cannot be transmitted to any third party without a written confirmation of both parties.</li>
-            <li>The Manufacturer can request the stock without any previous notice and they can collect on the same day of the request.</li>
-          </ol>
-        </li>
-      </ol>
-    </p>
-
-    <h2>Signature</h2>
-
-    <p>
-      The parties here have caused this Agreement to be executed on <b>{{querystring.agreementStartDate}}</b>:
-    </p>
-
-    <section class="signature-section">
-      <p class="signature-placeholder-wrapper">
-        <span class="manufacturer-signature-placeholder">
-          <img style="width: 150px; height: 62px;" src="data:image/png;base64,{{manufacturerSignatureBase64}}">
-        </span><br>
-        Daline de Jesus Paulo<br>
-        (Daline Nails)
+      <p>
+        <b>{{querystring.sellerLegalName}}</b>, trading as <b>{{querystring.sellerTradingName}}</b><br>
+        <b>ABN</b>: {{querystring.sellerABN}}<br>
+        <b>Address</b>: {{querystring.sellerAddress}}
       </p>
 
-      <p class="signature-placeholder-wrapper">
-        <span class="seller-signature-placeholder">
-          <img style="width: 150px; height: 62px;" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D">
-        </span><br>
-        {{querystring.sellerLegalName}}<br>
-        ({{querystring.sellerTradingName}})
+      and
+
+      <p>
+        <b>Daline de Jesus Paulo</b>, trading as <b>Daline Nails</b><br>
+        <b>ABN</b>: 59 801 630 489<br>
+        <b>Address</b>: 1/673-675 Pittwater Road, Dee Why, NSW
       </p>
+    </section>
+
+    <section>
+      <h2>2) DEFINITIONS</h2>
+
+      <p>
+        <b>THE MANUFACTURER</b> is the authorized representative from the party responsible to create the packaging, labelling, and production of <b>{{querystring.productName}}</b>.
+      </p>
+      <p>
+        <b>SELLER</b> owns a business called {{querystring.sellerTradingName}} and is set the privilege of a special condition of custody and sales of <b>{{querystring.productName}}</b> for a determined period of time without buying the products.
+      </p>
+      <p>
+        THE MANUFACTURER and SELLER have agreed upon a consignation sales agreement as follows:
+      </p>
+    </section>
+
+    <section>
+      <h2>
+        ARTICLE 1 – THE SUBJECT
+      </h2>
+
+      <p>
+        <ol class="article">
+          <li>
+            THE GOODS are subject to a consignation sales agreement of <b>{{querystring.productUnits}}</b> units of <b>{{querystring.productName}}</b> from THE MANUFACTURER stock.
+            <ol class="article">
+              <li>THE GOODS will be stored at Seller's store located in the address <b>{{querystring.sellerAddress}}</b></li>
+              <li>
+                Seller binds itself to:
+                <ol class="article">
+                  <li>Maintain good condition of the goods. Damage costs associated with the improper handling of the goods will be under the Seller responsibility.</li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>ARTICLE 2 – THE GOODS</h2>
+
+      <p>
+        <ol class="article" style="counter-reset: main-counter 1">
+          <li>
+            The goods consist of {{querystring.productUnits}} units of <b>{{querystring.productName}}</b> as described in the addendum.
+          </li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>
+        ARTICLE 3 – CONDITIONS OF SALE/PRICE
+      </h2>
+
+      <p>
+        <ol class="article" style="counter-reset: main-counter 2">
+          <li>
+            The conditions of sale are the following:
+            <ol class="article">
+              <li>
+                The manufacturer and Seller have agreed upon a maximum profit of 100% on the price list offered by the manufacturer
+              </li>
+              <li>
+                The total of sales should be declared every Saturday of each week, by message on the phone 0401603068 or by e-mail to dalinenails@gmail.com. Together with the sales declared on Monday, the amount should be transferred to the account: <b>062–155  1070 9755</b>
+                <ol class="article">
+                  <li><b>BSB:</b> 062–155 <b>Acc:</b> 1070 975</li>
+                </ol>
+              </li>
+              <li>Accounts not paid within 2 weeks of the sale are subject to a 5% weekly finance charge</li>
+            </ol>
+          </li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>ARTICLE 4 – LIABILITY</h2>
+
+      <p>
+        <ol class="article" style="counter-reset: main-counter 3">
+          <li>
+            The liability terms are the following:
+            <ol class="article">
+              <li>The Seller will bear the physical and juridical responsibility of the goods as soon as they arrive in their location.</li>
+              <li>The manufacturer shall not be liable for the loss, damage, or expectations regarding the effectiveness of the product other than what is specified in the packaging or online marketing.</li>
+            </ol>
+          </li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>ARTICLE 5 – DURATION</h2>
+
+      <p>
+        <ol class="article" style="counter-reset: main-counter 4">
+          <li>
+            The duration terms are the following:
+            <ol class="article">
+              <li>This agreement is effective at the date of signature and is valid for one month (the “Initial Term”).</li>
+              <li>This agreement is automatically renewable on a monthly basis after the expiration of the Initial Term. After the Initial Term, either The manufacturer or the Seller may cancel this Agreement by providing one (1) week written notice of termination to the other party.</li>
+            </ol>
+          </li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>ARTICLE 6 – TERMINATION</h2>
+
+      <p>
+        <ol class="article" style="counter-reset: main-counter 5">
+          <li>
+            The termination terms are the following:
+            <ol class="article">
+              <li>Any material breach of the terms of this agreement will give to the injured party the right to give notice to the other party to fulfill its obligations.</li>
+              <li>If such notice is not fulfilled 30 days after notification, the injured party may terminate the Agreement immediately by registered mail.</li>
+              <li>This Agreement is signed by The Manufacturer and Seller. The rights and obligations agreed upon the scope of this agreement cannot be transmitted to any third party without a written confirmation of both parties.</li>
+              <li>The Manufacturer can request the stock without any previous notice and they can collect on the same day of the request.</li>
+            </ol>
+          </li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>Signature</h2>
+
+      <p>
+        The parties here have caused this Agreement to be executed on <b>{{querystring.agreementStartDate}}</b>:
+      </p>
+
+      <div class="signature-section">
+        <p class="signature-placeholder-wrapper">
+          <span class="manufacturer-signature-placeholder">
+            <img style="width: 150px; height: 62px;" src="data:image/png;base64,{{manufacturerSignatureBase64}}">
+          </span><br>
+          Daline de Jesus Paulo<br>
+          (Daline Nails)
+        </p>
+
+        <p class="signature-placeholder-wrapper">
+          <span class="seller-signature-placeholder">
+            <img style="width: 150px; height: 62px;" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D">
+          </span><br>
+          {{querystring.sellerLegalName}}<br>
+          ({{querystring.sellerTradingName}})
+        </p>
+      </div>
     </section>
   </body>
 </html>
