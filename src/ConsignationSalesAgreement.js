@@ -10,7 +10,10 @@ module.exports = querystring => {
       }
       return HandleBars.compile(
         await readFile(`${root}/src/ConsignationSalesAgreement.html`, { encoding: 'UTF-8' })
-      )(querystring);
+      )({
+        querystring,
+        manufacturerSignatureBase64: await readFile(`${root}/src/signature.base64`, { encoding: 'UTF-8' })
+      });
     }
   };
 };
