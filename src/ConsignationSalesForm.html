@@ -34,7 +34,7 @@
         margin-left: auto;
         margin-right: auto;
       }
-      .inputs-group {
+      .input-wrapper {
         margin-bottom: 10px;
       }
       .inputs-controls {
@@ -54,15 +54,51 @@
     <h1>Consignation Sales Form</h1>
 
     <form>
-      <div class="inputs-group">
-        <label class="input-label" for="manufacturerLegalName">Manufacturer Name:</label>
+      <div class="input-wrapper">
+        <label class="input-label" for="sellerLegalName">Seller Legal Name:</label>
         <input
           class="input-field"
           autofocus
           type="text"
-          name="manufacturerLegalName"
-          id="manufacturerLegalName"
-          value="{{manufacturerLegalName}}"
+          name="sellerLegalName"
+          id="sellerLegalName"
+          value="{{sellerLegalName}}"
+          required
+        >
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label" for="sellerTradingName">Seller Trading Name:</label>
+        <input
+          class="input-field"
+          autofocus
+          type="text"
+          name="sellerTradingName"
+          id="sellerTradingName"
+          value="{{sellerTradingName}}"
+          required
+        >
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label" for="sellerABN">Seller ABN:</label>
+        <input
+          class="input-field"
+          autofocus
+          type="text"
+          name="sellerABN"
+          id="sellerABN"
+          value="{{sellerABN}}"
+          required
+        >
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label" for="sellerAddress">Seller Address:</label>
+        <input
+          class="input-field"
+          autofocus
+          type="text"
+          name="sellerAddress"
+          id="sellerAddress"
+          value="{{sellerAddress}}"
           required
         >
       </div>
