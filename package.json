@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "npm i && pm2 start start-server.js",
+    "start": "npm i && pm2 restart start-server.js",
     "dev": "node start-server.js"
   },
   "dependencies": {
