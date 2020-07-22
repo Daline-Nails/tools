@@ -1,15 +1,15 @@
 const express = require('express');
 const root = require('app-root-path');
 
-const InfluencerAdvertisingForm = require('./InfluencerAdvertisingForm');
-const InfluencerAdvertisingAgreement = require('./InfluencerAdvertisingAgreement');
+const IndividualAdvertisingForm = require('./IndividualAdvertisingForm');
+const IndividualAdvertisingAgreement = require('./IndividualAdvertisingAgreement');
 const readFile = require(`${root}/read-file`);
 
 module.exports = () => {
   const app = express();
 
   app.get('/:company/individual', async (req, res) => {
-    let page = InfluencerAdvertisingForm(req.query);
+    let page = IndividualAdvertisingForm(req.query);
 
     const AVAILABLE_PRODUCTS = [{
       text: 'Daline Nails Repair & Growth',
@@ -22,7 +22,7 @@ module.exports = () => {
     }];
 
     if (Object.keys(req.query).length === 0) {
-      page = InfluencerAdvertisingForm({
+      page = IndividualAdvertisingForm({
         querystring: req.query,
         availableProducts: AVAILABLE_PRODUCTS
       });
@@ -31,7 +31,7 @@ module.exports = () => {
     }
 
     if (req.query.edit === 'y') {
-      page = InfluencerAdvertisingForm({
+      page = IndividualAdvertisingForm({
         querystring: req.query,
         availableProducts: AVAILABLE_PRODUCTS
       });
@@ -39,7 +39,7 @@ module.exports = () => {
       return;
     }
 
-    page = InfluencerAdvertisingAgreement({
+    page = IndividualAdvertisingAgreement({
       querystring: req.query,
       manufacturerSignatureBase64: await readFile(`${root}/src/signature.base64`, { encoding: 'UTF-8' }),
     });
