@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const root = require('app-root-path');
 
 const SelectCompanyForm = require('./SelectCompanyForm');
+const SelectContract = require(`${root}/src/SelectContract`);
 
 const consignationApp = require(`${root}/src/consignation/app`);
 
@@ -18,7 +19,12 @@ app.post('/', bodyParser.urlencoded({ extended: true }), (req, res) => {
 });
 
 app.get('/:company', async (req, res) => {
-  res.redirect(`/${req.params.company}/consignation`);
+  const page = SelectContract();
+  res.send(await page.to('text/html'));
+});
+
+app.post('/:company', bodyParser.urlencoded({ extended: true }), async (req, res) => {
+  res.redirect(`${req.params.company}/${req.body.contractName}`)
 });
 
 app.use(consignationApp());
