@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Individual Advertising Agreement</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://bookn.me/static/styleguide.css">
+    <style>
+      html {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+      body {
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .input-wrapper {
+        margin-bottom: 10px;
+      }
+      .inputs-controls {
+        display: flex;
+      }
+      .inputs-controls > * {
+        text-align: center;
+      }
+      .inputs-controls > *:not(:first-child) {
+        margin-left: 5px;
+      }
+
+      fieldset {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <img style="display: block; margin: auto auto;" src="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/logo.png">
+    <h1 style="text-align: center;">Individual Advertising Agreement</h1>
+
+    <form>
+      <fieldset>
+        <legend>Advertiser</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="advertiserLegalName">Legal Name:</label>
+          <input
+            class="input-field"
+            autofocus
+            type="text"
+            placeholder="Mary Jane"
+            name="advertiserLegalName"
+            id="advertiserLegalName"
+            value="{{querystring.advertiserLegalName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="socialAccountName">Social Account:</label>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="http://instagram.com/maryjane"
+            name="socialAccountName"
+            id="socialAccountName"
+            value="{{querystring.socialAccountName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="advertiserAddress">Address:</label>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="1/1 Some Road, Sydney, NSW"
+            name="advertiserAddress"
+            id="advertiserAddress"
+            value="{{querystring.advertiserAddress}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Product</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="productName">Product Name:</label>
+          <input
+            type="text"
+            class="input-field"
+            name="productName"
+            id="productName"
+            value="Daline Nails Repair & Growth - Buy 4 Get 5"
+            readonly
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="productUnits">Units:</label>
+          <input
+            type="number"
+            class="input-field"
+            placeholder="1, 2, 3"
+            step="1"
+            min="1"
+            name="productUnits"
+            id="productUnits"
+            value="{{querystring.productUnits}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="totalWorth">Total Worth (AUD):</label>
+          <input
+            type="number"
+            class="input-field"
+            step="1"
+            min="1"
+            name="totalWorth"
+            id="totalWorth"
+            value="{{querystring.totalWorth}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Agreement</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="requiredUsePerDay">Required Product Use Per Day:</label>
+          <input
+            type="number"
+            placeholder="1"
+            class="input-field"
+            min="1"
+            name="requiredUsePerDay"
+            id="requiredUsePerDay"
+            value="{{querystring.requiredUsePerDay}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="requiredNumberOfPosts">Required Number Of Posts (per week):</label>
+          <input
+            type="number"
+            placeholder="1"
+            class="input-field"
+            min="1"
+            name="requiredNumberOfPosts"
+            id="requiredNumberOfPosts"
+            value="{{querystring.requiredNumberOfPosts}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Other</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="agreementStartDate">Agreement Start Date:</label>
+          <input
+            type="text"
+            placeholder="Jan 01, 2020"
+            class="input-field"
+            name="agreementStartDate"
+            id="agreementStartDate"
+            value="{{querystring.agreementStartDate}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <div class="inputs-controls">
+        <button class="input-btn primary" name="edit" value="y">Update URL</button>
+        {{#if querystring.edit}}
+          <button class="input-btn">Generate Document</button>
+        {{/if}}
+      </div>
+    </form>
+  </body>
+</html>
