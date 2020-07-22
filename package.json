@@ -2,11 +2,14 @@
   "private": true,
   "scripts": {
     "start": "npm i && pm2 restart start-server.js",
-    "dev": "node start-server.js"
+    "dev": "eslint '**/*.js' && node start-server.js"
   },
   "dependencies": {
     "app-root-path": "3.0.0",
     "express": "4.17.1",
     "handlebars": "4.7.6"
+  },
+  "devDependencies": {
+    "eslint": "5.14.1"
   }
 }

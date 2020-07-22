@@ -1,6 +1,6 @@
 const HandleBars = require('handlebars');
 const root = require('app-root-path');
-const readFile = require('../read-file');
+const readFile = require('../../read-file');
 
 module.exports = viewModel => {
   return {
@@ -9,7 +9,7 @@ module.exports = viewModel => {
         throw new Error(`Invalid media type ${mediaType}`);
       }
       return HandleBars.compile(
-        await readFile(`${root}/src/ConsignationSalesForm.html`, { encoding: 'UTF-8' })
+        await readFile(`${root}/src/consignation/ConsignationSalesForm.html`, { encoding: 'UTF-8' })
       )(viewModel);
     }
   };
