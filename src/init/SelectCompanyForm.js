@@ -9,7 +9,7 @@ module.exports = () => {
         throw new Error(`Invalid media type ${mediaType}`);
       }
       return HandleBars.compile(
-        await readFile(`${root}/SelectCompanyForm.html`, { encoding: 'UTF-8' })
+        await readFile(`${root}/src/init/SelectCompanyForm.html`, { encoding: 'UTF-8' })
       )();
     }
   };
