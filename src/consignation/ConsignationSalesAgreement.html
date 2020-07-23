@@ -24,7 +24,15 @@
     <meta name="msapplication-TileImage" content="https://s3-ap-southeast-2.amazonaws.com/static.dalinebooking.com/daline/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://bookn.me/static/styleguide.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.min.css">
+
     <style>
+      body {
+        margin-bottom: 100px;
+      }
+
       .signature-section {
         display: flex;
       }
@@ -62,6 +70,22 @@
         margin-left: -30px;
         content: counters(main-counter, ".") ". ";
         counter-increment: main-counter
+      }
+
+      .image-editing-container {
+        display: none;
+        max-width: 300px;
+        max-height: 300px;
+        margin: 0 auto;
+        background: #FFF;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+      }
+      .image-editing-container.open {
+        display: block;
       }
 
       @media print {
@@ -256,12 +280,31 @@
           function uploadSignature(fileInput) {
             const fileReader = new FileReader();
             fileReader.addEventListener('load', function() {
-              document.querySelector('[name="uploadedSignature"]').src = fileReader.result;
+              document.querySelector('.imageEditing').src = fileReader.result;
+              document.querySelector('.image-editing-container').classList.add('open');
+
+              const cropper = new Cropper(document.querySelector('.imageEditing'), { aspectRatio: 75 / 31 });
+              const listener = function() {
+                document.querySelector('[name="uploadedSignature"]').src = cropper.getCroppedCanvas().toDataURL('image/png');
+                document.querySelector('.image-editing-container').classList.remove('open');
+                cropper.destroy();
+              };
+              document.querySelector('.save-signature').addEventListener('click', listener);
             });
             fileReader.readAsDataURL(fileInput.files[0]);
           }
         </script>
       </div>
     </section>
+
+    <div class="image-editing-container">
+      <img
+        class="imageEditing"
+        src=""
+      >
+      <button class="input-btn primary save-signature" style="text-align: center; margin-top: 5px;">Cut & Attach Signature</button>
+    </div>
+
+    <div style="text-align: center; font-size: 80%;">After attaching the signature, please save the page as a PDF</div>
   </body>
 </html>
