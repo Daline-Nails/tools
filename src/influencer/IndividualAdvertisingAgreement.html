@@ -319,12 +319,22 @@
         </p>
 
         <p class="signature-placeholder-wrapper">
-          <span class="advertiser-signature-placeholder">
-            <img style="width: 150px; height: 62px;" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D">
+          <span class="advertiser-signature-placeholder" style="position: relative">
+            <input style="position: absolute; display: block; top: 0; bottom: 0; width: 100%; opacity: 0;" type="file" onchange="uploadSignature(this)">
+            <img style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D">
           </span><br>
           {{querystring.advertiserLegalName}}<br>
           ({{querystring.socialAccountName}})
         </p>
+        <script>
+          function uploadSignature(fileInput) {
+            const fileReader = new FileReader();
+            fileReader.addEventListener('load', function() {
+              document.querySelector('[name="uploadedSignature"]').src = fileReader.result;
+            });
+            fileReader.readAsDataURL(fileInput.files[0]);
+          }
+        </script>
       </div>
     </section>
   </body>
