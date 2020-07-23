@@ -247,7 +247,7 @@
         <p class="signature-placeholder-wrapper">
           <span class="seller-signature-placeholder" style="position: relative">
             <input style="position: absolute; display: block; top: 0; bottom: 0; width: 100%; opacity: 0;" type="file" onchange="uploadSignature(this)">
-            <img style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D">
+            <img style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/png;base64,{{signatureInstructionsBase64}}">
           </span><br>
           {{querystring.sellerLegalName}}<br>
           ({{querystring.sellerTradingName}})

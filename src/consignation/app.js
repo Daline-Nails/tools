@@ -42,6 +42,7 @@ module.exports = () => {
     page = ConsignationSalesAgreement({
       querystring: req.query,
       manufacturerSignatureBase64: await readFile(`${root}/src/signature.base64`, { encoding: 'UTF-8' }),
+      signatureInstructionsBase64: await readFile(`${root}/src/signature-instructions.base64`, { encoding: 'UTF-8' })
     });
     res.send(await page.to('text/html'));
     return;
