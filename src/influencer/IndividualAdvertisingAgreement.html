@@ -89,6 +89,9 @@
       }
 
       @media print {
+        .hide-on-print {
+          visibility: hidden;
+        }
         section {
           page-break-inside: avoid;
         }
@@ -345,7 +348,7 @@
         <p class="signature-placeholder-wrapper">
           <span class="advertiser-signature-placeholder" style="position: relative">
             <input style="position: absolute; display: block; top: 0; bottom: 0; width: 100%; opacity: 0;" type="file" onchange="uploadSignature(this)">
-            <img style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/png;base64,{{signatureInstructionsBase64}}">
+            <img class="individual-signature-placeholder-image hide-on-print" style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/png;base64,{{signatureInstructionsBase64}}">
           </span><br>
           {{querystring.advertiserLegalName}}<br>
           ({{querystring.socialAccountName}})
@@ -361,6 +364,7 @@
               const listener = function() {
                 document.querySelector('[name="uploadedSignature"]').src = cropper.getCroppedCanvas().toDataURL('image/png');
                 document.querySelector('.image-editing-container').classList.remove('open');
+                document.querySelector('.individual-signature-placeholder-image').classList.remove('hide-on-print');
                 cropper.destroy();
               };
               document.querySelector('.save-signature').addEventListener('click', listener);
@@ -372,10 +376,7 @@
     </section>
 
     <div class="image-editing-container">
-      <img
-        class="imageEditing"
-        src=""
-      >
+      <img class="imageEditing" src="">
       <button class="input-btn primary save-signature" style="text-align: center; margin-top: 5px;">Cut & Attach Signature</button>
     </div>
 
