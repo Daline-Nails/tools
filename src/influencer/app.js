@@ -29,7 +29,6 @@ module.exports = () => {
       signatureInstructionsBase64: await readFile(`${root}/src/signature-instructions.base64`, { encoding: 'UTF-8' })
     });
     res.send(await page.to('text/html'));
-    return;
   });
 
   return app;
