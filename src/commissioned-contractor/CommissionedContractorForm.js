@@ -4,6 +4,15 @@ const readFile = require(`${root}/read-file`);
 
 module.exports = viewModel => {
   return {
+
+    // TODO:
+    // lesseeLegalName
+    // lesseeTradingName
+    // lesseeABNACN
+    // lesseeServices
+    // rentPrice
+    // rentPaymentPeriod
+
     to: async (mediaType) => {
       if (mediaType !== 'text/html') {
         throw new Error(`Invalid media type ${mediaType}`);
