@@ -58,7 +58,100 @@
 
     <form>
       <fieldset>
-        <legend>Other</legend>
+        <legend>Lessee</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="lesseeLegalName">Lessee Legal Name:</label>
+          <input
+            type="text"
+            placeholder="Maria dos Santos Silva"
+            class="input-field"
+            name="lesseeLegalName"
+            id="lesseeLegalName"
+            value="{{querystring.lesseeLegalName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="lesseeTradingName">Lessee Trading Name:</label>
+          <input
+            type="text"
+            placeholder="Company Pty Ltd"
+            class="input-field"
+            name="lesseeTradingName"
+            id="lesseeTradingName"
+            value="{{querystring.lesseeTradingName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="lesseeABNACN">Lessee ABN or ACN:</label>
+          <input
+            type="text"
+            placeholder="00 000 000 000"
+            class="input-field"
+            name="lesseeABNACN"
+            id="lesseeABNACN"
+            value="{{querystring.lesseeABNACN}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Services</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="lesseeServices">Description of Lessee services:</label>
+          <input
+            type="text"
+            placeholder="Eyebrow, Lamination, Cosmetic Tatoo, etc."
+            class="input-field"
+            name="lesseeServices"
+            id="lesseeServices"
+            value="{{querystring.lesseeServices}}"
+            required
+          >
+          </div>
+          <div class="input-wrapper">
+            <label class="input-label" for="lesseeActivityPeriod">Period of Activity:</label>
+            <input
+              type="text"
+              placeholder="Every tuesday from 9AM to 5PM"
+              class="input-field"
+              name="lesseeActivityPeriod"
+              id="lesseeActivityPeriod"
+              value="{{querystring.lesseeActivityPeriod}}"
+              required
+            >
+          </div>
+      </fieldset>
+      <fieldset>
+        <legend>Rent</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="rentPrice">Price:</label>
+          <input
+            type="text"
+            placeholder="30% of all services"
+            class="input-field"
+            name="rentPrice"
+            id="rentPrice"
+            value="{{querystring.rentPrice}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="rentPaymentPeriod">Rent Payment Period:</label>
+          <input
+            type="text"
+            placeholder="Every Saturday"
+            class="input-field"
+            name="rentPaymentPeriod"
+            id="rentPaymentPeriod"
+            value="{{querystring.rentPaymentPeriod}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Agreement</legend>
         <div class="input-wrapper">
           <label class="input-label" for="agreementStartDate">Agreement Start Date:</label>
           <input
