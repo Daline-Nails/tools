@@ -19,6 +19,10 @@ module.exports = () => {
       text: 'Daline Nails Repair & Growth - Buy 4 Get 5',
       productId: '5x',
       selected: req.query.productName === 'Daline Nails Repair & Growth - Buy 4 Get 5'
+    }, {
+      text: 'Daline Nails Magic Pen',
+      productId: 'Magic1x',
+      selected: req.query.productName === 'Daline Nails Magic Pen'
     }];
 
     if (Object.keys(req.query).length === 0) {
