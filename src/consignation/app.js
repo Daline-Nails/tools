@@ -12,9 +12,9 @@ module.exports = () => {
     let page = ConsignationSalesForm(req.query);
 
     const AVAILABLE_PRODUCTS = [{
-      text: 'Daline Nails Repair & Growth',
+      text: 'Daline Nails Repair & Growth (Magic Pen - Nail Cream)',
       productId: '1x',
-      selected: req.query.productName === 'Daline Nails Repair & Growth'
+      selected: req.query.productName === 'Daline Nails Repair & Growth (Magic Pen - Nail Cream)'
     }, {
       text: 'Daline Nails Repair & Growth - Buy 4 Get 5',
       productId: '5x',
