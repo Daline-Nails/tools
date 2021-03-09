@@ -1,0 +1,170 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+/*
+ * 1. Allow containers to retain 100% width input within their boundaries for all pages
+ */
+* {
+  box-sizing: border-box; /* 1 */
+}
+
+/*
+  Input Button
+  ============
+ */
+
+/*
+  1. Remove shadow border for Samsung devices
+  2. Remove default border width and style for Chrome on Windows
+*/
+.input-btn {
+  position: relative;
+  padding: 15px 15px 15px 15px;
+  color: #000;
+  margin: -1px auto;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  -webkit-appearance: none;
+  font-size: 1em;
+  border-width: 1px; /* 2 */
+  border-style: solid; /* 2 */
+  background-color: #FFF; /* 1 */
+}
+
+.input-btn-content-line {
+  display: block;
+  line-height: 25px;
+}
+.input-btn-content-line > *:not(:first-child) {
+  padding-left: 5px;
+}
+.input-btn-content-line > *:not(:first-child):before {
+  content: '·';
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.input-btn-icon {
+  position: absolute;
+  right: 10px;
+  margin-top: -9px;
+  top: 50%;
+}
+
+.input-btn-info-wrapper {
+  color: #808080;
+}
+.input-btn-info-text {
+  vertical-align: middle;
+}
+.input-btn-info-img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 14px;
+  height: 14px;
+  background-size: 14px 14px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAXVBMVEUAAABbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1sc0QYqAAAAH3RSTlMA+/K/GhgF/ZgUuLPuf3uTbWfJTdZcUaybj9rYd0qduFFtxAAAANJJREFUKM9tktuWwiAMRZMQud/aqtM6Ov//meOygKDlJSH7kEAClMWTOxOd3XSCfrFGFFuMSSCmDl3J383umuhpqfGsnHmrTlblole6ONeXkat6nWFyRSsE7MQSP83qTQM1m9cAjHf4BBCRIaP5BgYnsAK+AcwObtsRSL9A8QgEAgptt+GlA7e1AfnzJC2VnWEgrXhWPJClXpcxQEf0pT4QNA2zaS0BJivHuLS7dlF6IPJPPeqgbJeNLebqL0SBS/uC94+umkY16xDTjJhat4+/zz+ltwhDWd+nJQAAAABJRU5ErkJggg==');
+  background-repeat: no-repeat;
+}
+
+.input-btn[disabled] {
+  opacity: .4;
+}
+
+.input-btn.primary {
+  color: #FFF;
+  background-color: #143fa0;
+  border-color: #1e3fbb #0d3f9e #163f7b;
+}
+
+.input-btn.success {
+  color: #FFF;
+  background-color: #14a04c;
+  border-color: #1ebb5d #0d9e47 #167b3f;
+}
+
+.input-btn.danger {
+  color: #FFF;
+  background-color: #a01414;
+  border-color: #bb1e1e #9e0d0d #7b1616;
+}
+
+/*
+  Input Field
+  ===========
+ */
+
+ .input-field-container {
+   display: flex;
+ }
+ /*
+  1. Remove default border-radius on Webkit
+ */
+ .input-field-select {
+  font-size: 17px;
+  margin-right: -1px;
+  border-radius: 0px; /* 1 */
+  -webkit-appearance: none;
+  padding: 10px 13px 10px 13px;
+  border-color: rgb(216, 216, 216);
+  border-width: 1px;
+  border-style: solid;
+  background-color: #e9ecef;
+ }
+ /*
+   2. Remove inner shadow from text input field on Safari mobile on iOS
+   3. Remove default border-radius on Webkit
+ */
+.input-field {
+  width: 100%;
+  -webkit-appearance: none; /* 2 */
+  border-radius: 0px; /* 3 */
+  font-size: 17px;
+  padding: 10px 13px 10px 13px;
+  border-color: rgb(216, 216, 216);
+  border-width: 1px;
+  border-style: solid;
+}
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.autogrow-textarea {
+  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  display: grid;
+}
+.autogrow-textarea::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+}
+.autogrow-textarea > textarea {
+  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+  resize: none;
+
+  /* Firefox shows scrollbar on growth, you can hide like this. */
+  overflow: hidden;
+}
+/*
+  1. For the textarea to gorw correctly you need to repeat all the styles from .input-field that affect the element block model.
+  2. Use the content font-style not the Chrome-specific monospace font.
+ */
+.autogrow-textarea > textarea,
+.autogrow-textarea::after {
+  font-size: 17px; /* 1 */
+  padding: 10px 13px 10px 13px; /* 1 */
+  border-width: 1px; /* 1 */
+  font: inherit; /* 2 */
+
+  /* Place on top of each other */
+  grid-area: 1 / 1 / 2 / 2;
+}
