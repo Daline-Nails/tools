@@ -11,6 +11,7 @@ app.use(require(`${root}/src/influencer/app`)());
 app.use(require(`${root}/src/internal-room-lease/app`)());
 app.use(require(`${root}/src/casual-internal-room-lease/app`)());
 app.use(require(`${root}/src/manicure-agreement/app`)());
+app.use(require(`${root}/src/mutual-nda/app`)());
 
 app.listen(8080, () => {
   process.stdout.write(`Listening on http://localhost:8080\n`);

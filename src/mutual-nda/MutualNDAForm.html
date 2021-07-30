@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Consignation Sales Agreement</title>
+    <title>Mutual NDA</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/favicon.ico">
@@ -54,29 +54,68 @@
   </head>
   <body>
     <img style="display: block; margin: auto auto;" src="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/logo.png">
-    <h1 style="text-align: center;">Sales Contract Generator</h1>
+    <h1 style="text-align: center;">Mutual Non-Disclosure Agreement</h1>
 
-    <form method="post">
-      <div class="input-wrapper">
-        <label class="input-label" for="contractName">Which contract?</label>
-        <select
-          style="width: 100%"
-          class="input-field-select"
-          name="contractName"
-          id="contractName"
-          autofocus
-          required
-        >
-          <option value="consignation">Consignation Sales Agreement</option>
-          <option value="individual">Individual Advertising Agreement</option>
-          <option value="internal-room-lease">Internal Room Lease Agreement</option>
-          <option value="casual-internal-room-lease">Casual Internal Room Lease Agreement</option>
-          <option value="manicure-agreement">Manicure Work Agreement</option>
-          <option value="mutual-nda">Mutual NDA</option>
-        </select>
-      </div>
+    <form>
+      <fieldset>
+        <legend>Party Details</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="partyName">Legal Name:</label>
+          <input
+            class="input-field"
+            autofocus
+            type="text"
+            placeholder="Mary Jane Inc."
+            name="partyName"
+            id="partyName"
+            value="{{querystring.partyName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="partyBusinessIdNumber">ABN/ACN:</label>
+          <input
+            class="input-field"
+            type="text"
+            name="partyBusinessIdNumber"
+            id="partyBusinessIdNumber"
+            value="{{querystring.partyBusinessIdNumber}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="partyAddress">Address:</label>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="1/1 Some Road, Sydney, NSW"
+            name="partyAddress"
+            id="partyAddress"
+            value="{{querystring.partyAddress}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Other</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="agreementStartDate">Agreement Start Date:</label>
+          <input
+            type="text"
+            placeholder="Jan 01, 2020"
+            class="input-field"
+            name="agreementStartDate"
+            id="agreementStartDate"
+            value="{{querystring.agreementStartDate}}"
+            required
+          >
+        </div>
+      </fieldset>
       <div class="inputs-controls">
-        <button class="input-btn primary">Go</button>
+        <button class="input-btn primary" name="edit" value="y">Update URL</button>
+        {{#if querystring.edit}}
+          <button class="input-btn">Generate Document</button>
+        {{/if}}
       </div>
     </form>
   </body>
