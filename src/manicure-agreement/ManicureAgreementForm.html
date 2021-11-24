@@ -72,7 +72,7 @@
           >
         </div>
         <div class="input-wrapper">
-          <label class="input-label" for="contractorABN">TFN/ABN:</label>
+          <label class="input-label" for="contractorTFN">TFN/ABN:</label>
           <input
             type="text"
             placeholder="000 000 000"
@@ -80,6 +80,18 @@
             name="contractorTFN"
             id="contractorTFN"
             value="{{querystring.contractorTFN}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="contractorAddress">Address:</label>
+          <input
+            type="text"
+            placeholder="1/2-3 Some Road, NSW"
+            class="input-field"
+            name="contractorAddress"
+            id="contractorAddress"
+            value="{{querystring.contractorAddress}}"
             required
           >
         </div>
