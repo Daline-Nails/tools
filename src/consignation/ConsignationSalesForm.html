@@ -168,10 +168,8 @@
         <div class="input-wrapper">
           <label class="input-label" for="pricePerUnit">Price per Unit (AUD):</label>
           <input
-            type="number"
+            type="text"
             class="input-field"
-            step="1"
-            min="1"
             name="pricePerUnit"
             id="pricePerUnit"
             value="{{querystring.pricePerUnit}}"
@@ -187,23 +185,20 @@
           const productUnits = +(document.querySelector('[name="productUnits"]').value || '0');
 
           if (productId === '1x') {
-            if (productUnits >= 10) {
-              document.querySelector('[name="pricePerUnit"]').value = '23';
-            }
-            if (productUnits >= 50) {
-              document.querySelector('[name="pricePerUnit"]').value = '22';
+            if (productUnits >= 20) {
+              document.querySelector('[name="pricePerUnit"]').value = '20.91';
             }
             if (productUnits >= 100) {
-              document.querySelector('[name="pricePerUnit"]').value = '21';
+              document.querySelector('[name="pricePerUnit"]').value = '18.19';
             }
           }
 
           if (productId === '5x') {
-            if (productUnits >= 20) {
-              document.querySelector('[name="pricePerUnit"]').value = '95';
+            if (productUnits >= 10) {
+              document.querySelector('[name="pricePerUnit"]').value = '83';
             }
-            if (productUnits >= 50) {
-              document.querySelector('[name="pricePerUnit"]').value = '90';
+            if (productUnits >= 100) {
+              document.querySelector('[name="pricePerUnit"]').value = '72';
             }
           }
         }

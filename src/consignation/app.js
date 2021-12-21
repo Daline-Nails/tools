@@ -12,17 +12,13 @@ module.exports = () => {
     let page = ConsignationSalesForm(req.query);
 
     const AVAILABLE_PRODUCTS = [{
-      text: 'Daline Nails Repair & Growth (Magic Pen - Nail Cream)',
+      text: 'Magic Pen Repair & Growth Single',
       productId: '1x',
-      selected: req.query.productName === 'Daline Nails Repair & Growth (Magic Pen - Nail Cream)'
+      selected: req.query.productName === 'Magic Pen Repair & Growth Single'
     }, {
-      text: 'Daline Nails Repair & Growth - Buy 4 Get 5',
+      text: 'Magic Pen Value Pack',
       productId: '5x',
-      selected: req.query.productName === 'Daline Nails Repair & Growth - Buy 4 Get 5'
-    }, {
-      text: 'Daline Nails Magic Pen',
-      productId: 'Magic1x',
-      selected: req.query.productName === 'Daline Nails Magic Pen'
+      selected: req.query.productName === 'Magic Pen Value Pack'
     }];
 
     if (Object.keys(req.query).length === 0) {
