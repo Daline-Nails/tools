@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Commission Contractor Agreement</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/styleguide.css">
+    <style>
+      html {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+      body {
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .input-wrapper {
+        margin-bottom: 10px;
+      }
+      .inputs-controls {
+        display: flex;
+      }
+      .inputs-controls > * {
+        text-align: center;
+      }
+      .inputs-controls > *:not(:first-child) {
+        margin-left: 5px;
+      }
+
+      fieldset {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <img style="display: block; margin: auto auto;" src="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/logo.png">
+    <h1 style="text-align: center;">Commission Contractor Agreement</h1>
+
+    <form>
+      <fieldset>
+        <legend>Contractor</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="contractorLegalName">Legal Name:</label>
+          <input
+            type="text"
+            placeholder="Maria dos Santos Silva"
+            class="input-field"
+            name="contractorLegalName"
+            id="contractorLegalName"
+            value="{{querystring.contractorLegalName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="contractorTradingName">Trading Name:</label>
+          <input
+            type="text"
+            placeholder="Company Pty Ltd"
+            class="input-field"
+            name="contractorTradingName"
+            id="contractorTradingName"
+            value="{{querystring.contractorTradingName}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="contractorABNACN">ABN or ACN:</label>
+          <input
+            type="text"
+            placeholder="00 000 000 000"
+            class="input-field"
+            name="contractorABNACN"
+            id="contractorABNACN"
+            value="{{querystring.contractorABNACN}}"
+            required
+          >
+        </div>
+        <div class="input-wrapper">
+          <label class="input-label" for="headOfficeAddress">Head Office Address:</label>
+          <input
+            type="text"
+            placeholder="00 000 000 000"
+            class="input-field"
+            name="headOfficeAddress"
+            id="headOfficeAddress"
+            value="{{querystring.headOfficeAddress}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Services</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="contractorSubjects">Description of contractor subjects:</label>
+          <input
+            type="text"
+            placeholder="Eyebrow, Lamination, Cosmetic Tatoo, etc."
+            class="input-field"
+            name="contractorSubjects"
+            id="contractorSubjects"
+            value="{{querystring.contractorSubjects}}"
+            required
+          >
+          </div>
+          <div class="input-wrapper">
+            <label class="input-label" for="contractorActivityPeriod">Period of Activity:</label>
+            <input
+              type="text"
+              placeholder="Every tuesday from 9AM to 5PM"
+              class="input-field"
+              name="contractorActivityPeriod"
+              id="contractorActivityPeriod"
+              value="{{querystring.contractorActivityPeriod}}"
+              required
+            >
+          </div>
+      </fieldset>
+      <fieldset>
+        <legend>Rent</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="commission">Commission:</label>
+          <input
+            type="text"
+            placeholder="30% of all services"
+            class="input-field"
+            name="commission"
+            id="commission"
+            value="{{querystring.commission}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Other</legend>
+        <div class="input-wrapper">
+          <label class="input-label" for="agreementStartDate">Agreement Start Date:</label>
+          <input
+            type="text"
+            placeholder="Jan 01, 2020"
+            class="input-field"
+            name="agreementStartDate"
+            id="agreementStartDate"
+            value="{{querystring.agreementStartDate}}"
+            required
+          >
+        </div>
+      </fieldset>
+      <div class="inputs-controls">
+        <button class="input-btn primary" name="edit" value="y">Update URL</button>
+        {{#if querystring.edit}}
+          <button class="input-btn">Generate Document</button>
+        {{/if}}
+      </div>
+    </form>
+  </body>
+</html>
