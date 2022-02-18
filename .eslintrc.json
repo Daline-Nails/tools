@@ -5,7 +5,10 @@
         "node": true
     },
     "extends": "eslint:recommended",
-    "globals": {},
+    "globals": {
+      "describe": "readonly",
+      "it": "readonly"
+    },
     "parserOptions": {
         "ecmaVersion": 2018
     },
