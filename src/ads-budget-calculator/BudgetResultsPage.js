@@ -11,7 +11,7 @@ const thisTemplate = () => `
   <body>
     <div style="text-align: center;">
       Budget for this month (in AUD):
-      <h1>{{budgetToSpend}}</h1>
+      <h1>{{{budgetToSpend}}}</h1>
       <a href="/budget/facebook">Go back</a>
     </div>
   </body>

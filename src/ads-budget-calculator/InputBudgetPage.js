@@ -24,7 +24,18 @@ const thisTemplate = () => `
   <body>
     <form method="POST">
       <div class="input-wrapper">
-        <label class="input-label" for="totalSales">Total Sales from Ads in AUD:</label>
+        <label class="input-label" for="previousBudget">Previous month budget (AUD):</label>
+        <input
+          type="number"
+          placeholder="9999"
+          class="input-field"
+          name="previousBudget"
+          id="previousBudget"
+          required
+        >
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label" for="totalSales">Total Ad Sales this month (AUD):</label>
         <input
           type="number"
           placeholder="9999"
