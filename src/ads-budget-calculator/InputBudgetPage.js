@@ -24,7 +24,7 @@ const thisTemplate = () => `
   <body>
     <form method="POST">
       <div class="input-wrapper">
-        <label class="input-label" for="previousBudget">Previous month budget (AUD):</label>
+        <label class="input-label" for="previousBudget">Budget from previous period (AUD):</label>
         <input
           type="number"
           placeholder="9999"
@@ -35,7 +35,7 @@ const thisTemplate = () => `
         >
       </div>
       <div class="input-wrapper">
-        <label class="input-label" for="totalSales">Total Ad Sales this month (AUD):</label>
+        <label class="input-label" for="totalSales">Ad Sales from previous period (AUD):</label>
         <input
           type="number"
           placeholder="9999"
