@@ -17,14 +17,14 @@ describe('Calculate Budget To Spend', () => {
     expect(budgetResult.budgetForMonth.toFormat()).to.eql('A$5,578.80');
     expect(budgetResult.commission.toFormat()).to.eql('A$500.00');
   });
-  it('keeps a minimum of $1000/month ($32/day) if 60% budget would be less than $1000', async () => {
+  it('keeps a minimum of $2000/month ($66/day) if 60% budget would be less than $2000', async () => {
     const budgetResult = calculateBudgetToSpend({
       previousBudget: AUD(0),
-      totalAdReturn: AUD(1599),
+      totalAdReturn: AUD(2599),
       adsManagementCostInAUD: await convertedBRLToAUD(1600),
       adsDesignCost: await convertedBRLToAUD(1000)
     });
-    expect(budgetResult.budgetForMonth.toFormat()).to.eql('A$1,000.00');
+    expect(budgetResult.budgetForMonth.toFormat()).to.eql('A$2,000.00');
     expect(budgetResult.commission.toFormat()).to.eql('A$0.00');
   });
   it('DOES NOT pay 5% commission on the current Ad return for 1.9x ROI from the previous budget', async () => {
