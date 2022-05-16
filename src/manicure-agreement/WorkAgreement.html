@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Manicure Work Agreement</title>
+    <title>Work Agreement</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/favicon.ico">
@@ -47,7 +47,7 @@
         display: inline-block;
         border-bottom: 1px solid;
       }
-      .contractor-signature-placeholder {
+      .worker-signature-placeholder {
         width: 100%;
         text-align: center;
         display: inline-block;
@@ -103,7 +103,7 @@
   </head>
   <body>
     <img style="display: block; margin: auto auto;" src="https://s3-ap-southeast-2.amazonaws.com/static.bookn.me/daline/logo.png">
-    <h1 style="text-align: center;">Manicure Work Agreement</h1>
+    <h1 style="text-align: center;">Work Agreement</h1>
 
     <section>
       <h2>1) THE PARTIES</h2>
@@ -111,9 +111,9 @@
       This agreement is made and effective between:
 
       <p>
-        <b>{{querystring.contractorLegalName}}</b><br>
-        <b>TFN/ABN</b>: {{querystring.contractorTFN}}<br>
-        <b>Address</b>: {{querystring.contractorAddress}}<br>
+        <b>{{querystring.workerLegalName}}</b><br>
+        <b>TFN</b>: {{querystring.workerTFN}}<br>
+        <b>Address</b>: {{querystring.workerAddress}}<br>
       </p>
 
       and
@@ -128,7 +128,7 @@
     <section>
       <h2>2) DEFINITIONS</h2>
       <p>
-        <b>THE EMPLOYEE</b> represents <b>{{querystring.contractorLegalName}}</b>, TFN/ABN {{querystring.contractorTFN}}</b>.
+        <b>THE EMPLOYEE</b> represents <b>{{querystring.workerLegalName}}</b>, TFN {{querystring.workerTFN}}</b>.
       </p>
       <p>
         <b>THE EMPLOYER</b> is the party responsible to provide THE PAYMENT for THE SERVICES</b>.
@@ -177,7 +177,7 @@
       <p>
         <ol class="article" style="counter-reset: main-counter 1">
           <li>
-            The price for the payment of THE SERVICES, including commission and bonuses, is agreed as the following: <b>{{querystring.contractorPayment}}</b>.
+            The price for the payment of THE SERVICES, including commission and bonuses, is agreed as the following: <b>{{querystring.workerPayment}}</b>.
             <ol class="article">
               <li>
                 The payment of THE SERVICES is payable by THE EMPLOYER to THE EMPLOYEE in arrears on the last day of the next week related to the work of the week before, assuming a week starts on Sunday and ends on Saturday.
@@ -224,7 +224,7 @@
           <li>
             The period of activity terms are the following:
             <ol class="article">
-              <li>THE EMPLOYEE agrees to provide THE SERVICE(s) for THE EMPLOYER within the following date/period (the "PERIOD OF WORK"): <b>{{querystring.contractorActivityPeriod}}.</b></li>
+              <li>THE EMPLOYEE agrees to provide THE SERVICE(s) for THE EMPLOYER within the following date/period (the "PERIOD OF WORK"): <b>{{querystring.workerActivityPeriod}}.</b></li>
               <li>
                 THE EMPLOYEE agrees to take a minimum of 30 minutes unpaid break after 6 hours of consecutive work, as required by law.
                 <ol class="article">
@@ -437,11 +437,11 @@
         </p>
 
         <p class="signature-placeholder-wrapper">
-          <span class="contractor-signature-placeholder" style="position: relative">
+          <span class="worker-signature-placeholder" style="position: relative">
             <input style="position: absolute; display: block; top: 0; bottom: 0; width: 100%; opacity: 0;" type="file" onchange="uploadSignature(this)">
-            <img class="contractor-signature-placeholder-image hide-on-print" style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/png;base64,{{signatureInstructionsBase64}}">
+            <img class="worker-signature-placeholder-image hide-on-print" style="width: 150px; height: 62px;" name="uploadedSignature" src="data:image/png;base64,{{signatureInstructionsBase64}}">
           </span><br>
-          {{querystring.contractorLegalName}}<br>
+          {{querystring.workerLegalName}}<br>
         </p>
         <script>
           function uploadSignature(fileInput) {
@@ -454,7 +454,7 @@
               const listener = function() {
                 document.querySelector('[name="uploadedSignature"]').src = cropper.getCroppedCanvas().toDataURL('image/png');
                 document.querySelector('.image-editing-container').classList.remove('open');
-                document.querySelector('.contractor-signature-placeholder-image').classList.remove('hide-on-print');
+                document.querySelector('.worker-signature-placeholder-image').classList.remove('hide-on-print');
                 cropper.destroy();
               };
               document.querySelector('.save-signature').addEventListener('click', listener);

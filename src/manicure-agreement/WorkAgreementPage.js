@@ -9,7 +9,7 @@ module.exports = viewModel => {
         throw new Error(`Invalid media type ${mediaType}`);
       }
       return HandleBars.compile(
-        await readFile(`${__dirname}/ManicureAgreementForm.html`, { encoding: 'UTF-8' })
+        await readFile(`${__dirname}/WorkAgreement.html`, { encoding: 'UTF-8' })
       )(viewModel);
     }
   };
