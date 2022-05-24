@@ -1,7 +1,7 @@
 const Money = require('dinero.js');
 
-const MINIMUM_BUDGET_LIMIT = Money({ amount: 2000 * 100, currency: 'AUD' });
-const UNACCEPTABLE_THRESHOLD = Money({ amount: 1000 * 100, currency: 'AUD' });
+const MINIMUM_BUDGET_LIMIT = Money({ amount: 3000 * 100, currency: 'AUD' });
+const UNACCEPTABLE_THRESHOLD = Money({ amount: 2000 * 100, currency: 'AUD' });
 
 module.exports = ({ previousBudget, totalAdReturn, adsManagementCostInAUD, adsDesignCost }) => {
   const totalCost = totalAdReturn
@@ -17,7 +17,7 @@ module.exports = ({ previousBudget, totalAdReturn, adsManagementCostInAUD, adsDe
     budgetForNextMonth = Money({ amount: 0, currency: 'AUD' });
     commission = Money({ amount: 0, currency: 'AUD' });
   } else if (budgetForNextMonth.lessThanOrEqual(MINIMUM_BUDGET_LIMIT)) {
-    budgetForNextMonth = Money({ amount: 2000 * 100, currency: 'AUD' });
+    budgetForNextMonth = MINIMUM_BUDGET_LIMIT;
     commission = Money({ amount: 0, currency: 'AUD' });
   }
 
