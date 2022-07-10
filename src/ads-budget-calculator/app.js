@@ -21,7 +21,7 @@ module.exports = () => {
       previousBudget: AUD(+req.body.previousBudget),
       totalAdReturn: AUD(+req.body.totalSales),
       adsManagementCostInAUD: await convertedBRLToAUD(1600),
-      adsDesignCost: await convertedBRLToAUD(1000)
+      adsDesignCost: await convertedBRLToAUD(2000)
     }));
     res.send(BudgetResultPage({ budgetToSpend }).to('text/html'));
   });
