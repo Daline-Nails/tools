@@ -17,16 +17,6 @@ describe('Calculate Budget To Spend', () => {
     expect(budgetResult.budgetForMonth.toFormat()).to.eql('A$5,578.80');
     expect(budgetResult.commission.toFormat()).to.eql('A$500.00');
   });
-  it('keeps a minimum of $3000/month ($100/day) if 60% budget would be less than $3000', async () => {
-    const budgetResult = calculateBudgetToSpend({
-      previousBudget: AUD(0),
-      totalAdReturn: AUD(3599),
-      adsManagementCostInAUD: await convertedBRLToAUD(1600),
-      adsDesignCost: await convertedBRLToAUD(1000)
-    });
-    expect(budgetResult.budgetForMonth.toFormat()).to.eql('A$3,000.00');
-    expect(budgetResult.commission.toFormat()).to.eql('A$0.00');
-  });
   it('DOES NOT pay 5% commission on the current Ad return for 1.9x ROI from the previous budget', async () => {
     const budgetResult = calculateBudgetToSpend({
       previousBudget: AUD(3000),
@@ -35,15 +25,6 @@ describe('Calculate Budget To Spend', () => {
       adsDesignCost: await convertedBRLToAUD(1000)
     });
     expect(budgetResult.commission.toFormat()).to.eql('A$0.00');
-  });
-  it('DOES pay 5% commission on the current Ad return for 2x ROI from the previous budget', async () => {
-    const budgetResult = calculateBudgetToSpend({
-      previousBudget: AUD(3000),
-      totalAdReturn: AUD(6000),
-      adsManagementCostInAUD: await convertedBRLToAUD(1600),
-      adsDesignCost: await convertedBRLToAUD(1000)
-    });
-    expect(budgetResult.commission.toFormat()).to.eql('A$300.00');
   });
 
   it('shows a message to talk to Daline Nails if return of Ads is less tan $1000 in any given month', async () => {
