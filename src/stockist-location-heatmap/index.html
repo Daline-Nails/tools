@@ -173,7 +173,7 @@
         const showInfoWindow = (map, pos) => {
           const infoWindow = new google.maps.InfoWindow();
           infoWindow.setPosition(pos);
-          infoWindow.setContent('⌖ You are here!');
+          infoWindow.setContent('<p style="background: #472F92; color: #FFF; padding: 25px;; border-radius: 70px;">⌖ You are here!</p>');
           infoWindow.open(map);
 
           setTimeout(() => {
