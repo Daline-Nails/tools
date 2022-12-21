@@ -7,7 +7,6 @@ const htmlContents = fs.readFileSync(`${root}/src/stockist-location-heatmap/inde
 module.exports = () => {
   const app = express();
 
-  // app.use('/stockist-location-heatmap', express.static('./public'));
   app.get('/charts/stockist-location-heatmap', (req, res) => {
     res.send(htmlContents);
   });
