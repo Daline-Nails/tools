@@ -178,9 +178,13 @@
           infoWindow.setContent('<p style="background: #472F92; color: #FFF; padding: 25px;; border-radius: 70px;">⌖ You are here!</p>');
           infoWindow.open(map);
 
+          google.maps.event.addListener(map, 'click', function(event) {
+            infoWindow.close();
+          });
+
           setTimeout(() => {
             infoWindow.close();
-          }, 5000);
+          }, 3000);
         };
 
         const startSpin = (button, content) => {
