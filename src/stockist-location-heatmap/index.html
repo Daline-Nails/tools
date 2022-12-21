@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Daline Nails Repair & Growth Influence</title>
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      const localSellers = [
+        {
+          "name": "Priceline Pharmacy Dee Why",
+          "address": "Dee Why Grand Shopping Centre, 5 6, 834 Pittwater Rd, Dee Why, NSW",
+          "latLng": [
+            -33.7546305,
+            151.2827145
+          ]
+        },
+        {
+          "name": "Elevate Hub",
+          "address": "16B Park St, Mona Vale",
+          "latLng": [
+            -33.6756163,
+            151.3042188
+          ]
+        },
+        {
+          "name": "West Pennant Hills Discount Drug Store",
+          "address": "558 Pennant Hills Rd, West Pennant Hills, NSW",
+          "latLng": [
+            -33.7471455,
+            151.048378
+          ]
+        },
+        {
+          "name": "Priceline Pharmacy Beecroft",
+          "address": "16-24 Hannah St, Beecroft",
+          "latLng": [
+            -33.7492062,
+            151.0625338
+          ]
+        },
+        {
+          "name": "Roula Arkilo Beauty Clinic",
+          "address": "Shop 54, Excelsior St., Merrylands",
+          "latLng": [
+            -33.8431805,
+            151.0003024
+          ]
+        },
+        {
+          "name": "Prodermal Rouse Hill",
+          "address": "4/591 Withers Road, Rouse Hill",
+          "latLng": [
+            -33.6741265,
+            150.9185245
+          ]
+        },
+        {
+          "name": "Priceline Pharmacy Gordon",
+          "address": "Gordon Centre, Shop 1/808 Pacific Hwy, Gordon",
+          "latLng": [
+            -33.7551558,
+            151.1502048
+          ]
+        },
+        {
+          "name": "Priceline Roselands",
+          "address": "Shop L25 Lower Ground Floor Roselands Shopping Centre, Roselands Dr, Roselands",
+          "latLng": [
+            -33.9343334,
+            151.0665554
+          ]
+        },
+        {
+          "name": "KR Beauty Brazil",
+          "address": "7/635 Gardeners Rd, Mascot",
+          "latLng": [
+            -33.9207493,
+            151.1872647
+          ]
+        },
+        {
+          "name": "Neo Nails - Top Ryde",
+          "address": "Shop 3020, 109-129 Blaxland Rd, Ryde",
+          "latLng": [
+            -33.8121613,
+            151.1037408
+          ]
+        },
+        {
+          "name": "Nailed on Beauty & Tanning",
+          "address": "Shop 8B/25 Ralston Ave, Belrose",
+          "latLng": [
+            -33.7285097,
+            151.2146845
+          ]
+        },
+        {
+          "name": "Bianca Ribeiro Beauty",
+          "address": "528 Princes Hwy, Rockdale, ",
+          "latLng": [
+            -33.9533143,
+            151.1355582
+          ]
+        },
+        {
+          "name": "Unique Beauty & Style - Perth",
+          "address": "649 Beaufort St, Mount Lawley, Perth WA, ",
+          "latLng": [
+            -31.9343853,
+            115.8541161
+          ]
+        },
+        {
+          "name": "Clare's Couture Nailz",
+          "address": "5829 Coveside Lane, Sanctuary Cove, QLD",
+          "latLng": [
+            -27.8579461,
+            153.3646784
+          ]
+        },
+        {
+          "name": "All About Bodies",
+          "address": "Shop2/171 Surf Parade, Broadbeach, Qld",
+          "latLng": [
+            -28.0200902,
+            153.4290101
+          ]
+        }
+      ];
+
+      (function(isBrowserSupported){
+        if (!isBrowserSupported) return;
+
+        window.initMap = () => {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: { lat: -33.8557236, lng: 151.0019467 }
+          });
+
+          var localSellersHeatmap = new google.maps.visualization.HeatmapLayer({
+            data: localSellers.map(seller => new google.maps.LatLng(seller.latLng[0], seller.latLng[1])),
+            map: map,
+            radius: 50
+          });
+        }
+        document.write(`<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj5kXqfpKiF34pmONGXZqaD89mj15QQ90&libraries=visualization&callback=initMap"><\/script>`);
+      }(function() {
+        function supportsArrow() {
+          try {
+            eval('()=>{}');
+          } catch (e) {
+            return false;
+          }
+          return true;
+        }
+        function supportsAsync() {
+          try {
+            eval('async () => {}');
+            return true;
+          } catch (e) { return false }
+        }
+        function supportsTemplateLiterals() {
+          try { return eval("''===``") }
+          catch(e) { return false; }
+        }
+
+        return (
+          !!supportsArrow() &&
+          !!supportsAsync() &&
+          !!supportsTemplateLiterals()
+        );
+      }));
+    </script>
+  </body>
+</html>

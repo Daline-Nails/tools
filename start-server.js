@@ -5,6 +5,7 @@ const app = express();
 
 app.use('/static', express.static('./static'))
 
+app.use(require(`${root}/src/stockist-location-heatmap/app`)());
 app.use(require(`${root}/src/init/app`)());
 app.use(require(`${root}/src/consignation/app`)());
 app.use(require(`${root}/src/influencer/app`)());
