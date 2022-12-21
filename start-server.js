@@ -5,7 +5,6 @@ const app = express();
 
 app.use('/static', express.static('./static'))
 
-app.use(require(`${root}/src/stockist-location-heatmap/app`)());
 app.use(require(`${root}/src/init/app`)());
 app.use(require(`${root}/src/consignation/app`)());
 app.use(require(`${root}/src/influencer/app`)());
@@ -14,6 +13,8 @@ app.use(require(`${root}/src/casual-internal-room-lease/app`)());
 app.use(require(`${root}/src/manicure-agreement/app`)());
 app.use(require(`${root}/src/mutual-nda/app`)());
 app.use(require(`${root}/src/commission-room-lease/app`)());
+
+app.use(require(`${root}/src/stockist-location-heatmap/app`)());
 app.use(require(`${root}/src/ads-budget-calculator/app`)());
 
 app.listen(8080, () => {
