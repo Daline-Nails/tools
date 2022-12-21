@@ -217,9 +217,9 @@
 
                 showInfoWindow(map, pos);
                 stopSpin(geoLocationBtn, '⌖');
-              },
-              () => {
-                handleLocationError(true, infoWindow, map.getCenter());
+              }, (e) => {
+                alert(`Error trying to get your location: ${e.message}`);
+                stopSpin(geoLocationBtn, '⌖');
               });
             });
           }
