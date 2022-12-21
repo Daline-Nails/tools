@@ -1,0 +1,183 @@
+<div id="container" style="width:100%; height:400px;"></div>
+<div id="container2" style="width:100%; height:400px;"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const endDates = [
+      '31-01-2022', '28-02-2022', '31-03-2022', '30-04-2022', '31-05-2022', '30-06-2022', '31-06-2022',
+      '31-08-2022', '30-09-2022', '30-10-2022'
+    ];
+    const adsData = [
+      { x: 1, y: 1877 },
+      { x: 2, y: 1743 },
+      { x: 3, y: 1461 },
+      { x: 4, y: 3738 },
+      { x: 5, y: 3216 },
+      { x: 6, y: 6198 },
+      { x: 7, y: 11519 },
+      { x: 8, y: 9501 },
+      { x: 9, y: 12052 },
+      { x: 10, y: 16615 },
+    ];
+    const shopifyData = [
+      { x: 1, y: 4927 },
+      { x: 2, y: 3845 },
+      { x: 3, y: 3943 },
+      { x: 4, y: 6446 },
+      { x: 5, y: 7494 },
+      { x: 6, y: 11589 },
+      { x: 7, y: 18148 },
+      { x: 8, y: 18430 },
+      { x: 9, y: 21231 },
+      { x: 10, y: 24505 },
+    ];
+    const budget = [
+      { x: 1, y: 934 },
+      { x: 2, y: 1039 },
+      { x: 3, y: 1037 },
+      { x: 4, y: 1894 },
+      { x: 5, y: 2133 },
+      { x: 6, y: 3032 },
+      { x: 7, y: 4036 },
+      { x: 8, y: 5323 },
+      { x: 9, y: 5554 },
+      { x: 10, y: 5990 },
+    ];
+    const diffData = [
+      { x: 1, y: shopifyData[0].y - adsData[0].y },
+      { x: 2, y: shopifyData[1].y - adsData[1].y },
+      { x: 3, y: shopifyData[2].y - adsData[2].y },
+      { x: 4, y: shopifyData[3].y - adsData[3].y },
+      { x: 5, y: shopifyData[4].y - adsData[4].y },
+      { x: 6, y: shopifyData[5].y - adsData[5].y },
+      { x: 7, y: shopifyData[6].y - adsData[6].y },
+      { x: 8, y: shopifyData[7].y - adsData[7].y },
+      { x: 9, y: shopifyData[8].y - adsData[8].y },
+      { x: 10, y: shopifyData[9].y - adsData[9].y },
+    ];
+    const percentProfit = [
+      { x: 1, y: 100 * (diffData[0].y) / shopifyData[0].y },
+      { x: 2, y: 100 * (diffData[1].y) / shopifyData[1].y },
+      { x: 3, y: 100 * (diffData[2].y) / shopifyData[2].y },
+      { x: 4, y: 100 * (diffData[3].y) / shopifyData[3].y },
+      { x: 5, y: 100 * (diffData[4].y) / shopifyData[4].y },
+      { x: 6, y: 100 * (diffData[5].y) / shopifyData[5].y },
+      { x: 7, y: 100 * (diffData[6].y) / shopifyData[6].y },
+      { x: 8, y: 100 * (diffData[7].y) / shopifyData[7].y },
+      { x: 9, y: 100 * (diffData[8].y) / shopifyData[8].y },
+      { x: 10, y: 100 * (diffData[9].y) / shopifyData[9].y },
+    ];
+    Highcharts.chart('container', {
+      title: {
+        text: 'Online Sales x Ads Spent'
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+        labels: {
+          formatter: function () {
+            return '$' + this.value;
+          }
+        }
+      },
+      xAxis: {
+        labels: {
+          formatter: function () {
+            return endDates[this.value - 1];
+          }
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+      },
+      series: [
+        {
+          name: 'FB Ads',
+          data: adsData,
+          color: 'rgb(63, 69, 164)'
+        },
+        {
+          name: 'Shopify',
+          data: shopifyData,
+          color: 'rgb(57, 178, 77)'
+        },
+        {
+          name: 'Budget',
+          data: budget,
+          color: 'rgb(240, 247, 21)'
+        },
+        {
+          name: 'Difference',
+          data: diffData,
+          dashStyle: 'shortdot',
+          color: 'rgb(233, 92, 43)'
+        }
+      ],
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+    });
+
+    Highcharts.chart('container2', {
+      title: {
+        text: 'Percent of Profit Over Ads'
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+        labels: {
+          formatter: function () {
+            return this.value + '%';
+          }
+        }
+      },
+      xAxis: {
+        labels: {
+          formatter: function () {
+            return endDates[this.value - 1];
+          }
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+      },
+      series: [{
+        name: 'Profit Over Ads',
+        data: percentProfit,
+        dashStyle: 'shortdot',
+        color: 'rgb(233, 92, 43)'
+      }],
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+    });
+  });
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
