@@ -156,6 +156,38 @@
             map: map,
             radius: 50
           });
+
+          localSellers.forEach(seller => {
+            const infowindow = new google.maps.InfoWindow({
+              content: `
+                <h1>${seller.name}</h1>
+                <p>${seller.address}</p>
+              `,
+              maxWidth: 400,
+            });
+            const image = {
+              url: "data:image/png;base64,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",
+              // This marker is 20 pixels wide by 32 pixels high.
+              size: new google.maps.Size(50, 69),
+              // The origin for this image is (0, 0).
+              origin: new google.maps.Point(0, 0)
+            };
+            const marker = new google.maps.Marker({
+              position: { lat: seller.latLng[0], lng: seller.latLng[1] },
+              map,
+              icon: image,
+              title: seller.name,
+            });
+            marker.addListener('click', () => {
+              infowindow.open({
+                anchor: marker,
+                map,
+              });
+            });
+            google.maps.event.addListener(map, 'click', function(event) {
+              infowindow.close();
+            });
+          })
         }
         document.write(`<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj5kXqfpKiF34pmONGXZqaD89mj15QQ90&libraries=visualization&callback=initMap"><\/script>`);
       }(function() {
