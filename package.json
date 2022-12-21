@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "npm i && pm2 restart start-server.js",
-    "dev": "eslint '**/*.js' && node start-server.js"
+    "dev": "eslint '**/*.js' && nodemon start-server.js -e js,html"
   },
   "dependencies": {
     "app-root-path": "3.0.0",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "chai": "4.3.6",
     "eslint": "5.14.1",
-    "mocha": "9.2.0"
+    "mocha": "9.2.0",
+    "nodemon": "2.0.20"
   }
 }

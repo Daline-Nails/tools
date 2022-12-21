@@ -14,6 +14,19 @@
         margin: 0;
         padding: 0;
       }
+
+      .spin .content {
+        display: block;
+        animation: clockwiseSpin 1s linear infinite;
+      }
+      @keyframes clockwiseSpin {
+        from  {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -142,14 +155,74 @@
         }
       ];
 
-      (function(isBrowserSupported){
+      (function(isBrowserSupported) {
         if (!isBrowserSupported) return;
 
+        const createGeolocationButton = (map) => {
+          const locationButton = document.createElement("button");
+          locationButton.innerHTML = `<span class="content">⌖</span>`;
+          locationButton.style.cursor = "pointer";
+          locationButton.style.background = '#FFF';
+          locationButton.style.border = 'none';
+          locationButton.style.marginRight = '10px';
+          locationButton.style.height = '40px';
+          locationButton.style.width = '40px';
+          return locationButton;
+        };
+
+        const showInfoWindow = (map, pos) => {
+          const infoWindow = new google.maps.InfoWindow();
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('⌖ You are here!');
+          infoWindow.open(map);
+
+          setTimeout(() => {
+            infoWindow.close();
+          }, 5000);
+        };
+
+        const startSpin = (button, content) => {
+          button.classList.add('spin');
+          button.querySelector('.content').textContent = content;
+        };
+
+        const stopSpin = (button, content) => {
+          button.classList.remove('spin');
+          button.querySelector('.content').textContent = content;
+        };
+
         window.initMap = () => {
+          const mapCenter = [-29.830709201476697, 134.6193490235566];
           var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: { lat: -33.8557236, lng: 151.0019467 }
+            zoom: 4,
+            center: { lat: mapCenter[0], lng: mapCenter[1] }
           });
+
+          if (navigator.geolocation) {
+            const geoLocationBtn = createGeolocationButton(map);
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(geoLocationBtn);
+            geoLocationBtn.addEventListener('click', () => {
+              startSpin(geoLocationBtn, '↻')
+              navigator.geolocation.getCurrentPosition((position) => {
+                const pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude,
+                };
+
+                map.setCenter({
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                });
+                map.setZoom(13);
+
+                showInfoWindow(map, pos);
+                stopSpin(geoLocationBtn, '⌖');
+              },
+              () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+              });
+            });
+          }
 
           var localSellersHeatmap = new google.maps.visualization.HeatmapLayer({
             data: localSellers.map(seller => new google.maps.LatLng(seller.latLng[0], seller.latLng[1])),
