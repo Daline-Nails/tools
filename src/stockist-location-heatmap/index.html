@@ -385,11 +385,15 @@
           try { return eval("''===``") }
           catch(e) { return false; }
         }
+        function supportsClassList() {
+          return !!document.documentElement.classList;
+        }
 
         return (
           !!supportsArrow() &&
           !!supportsAsync() &&
-          !!supportsTemplateLiterals()
+          !!supportsTemplateLiterals() &&
+          !!supportsClassList()
         );
       }));
     </script>

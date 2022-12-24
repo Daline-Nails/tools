@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Iframe Test File</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      .custom-iframe-class {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="target-maps-container"></div>
+    <script src="/charts/stockist-location-heatmap/inject.js"></script>
+    <script>
+      DalineNails.injectStockistsIframe({
+        src: '/charts/stockist-location-heatmap?key=AIzaSyB6sSzVnfK3buI__fNj2GBJCnW8OBXEn0E',
+        className: 'custom-iframe-class',
+        container: 'target-maps-container',
+        iframeTag: 'iframe'
+      });
+    </script>
+  </body>
+</html>
