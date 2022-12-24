@@ -8,7 +8,8 @@
     iframe.src = src;
     iframe.height = '400';
     iframe.layout = 'fill';
-    iframe.sandbox = 'allow-scripts allow-same-origin allow-popups';
+    iframe.sandbox = 'allow-modals allow-scripts allow-same-origin allow-popups allow-top-navigation';
+    iframe.allow = 'geolocation *';
     iframe.frameborder = '0';
     iframe.classList.add(className);
     [...document.querySelectorAll(container)].forEach(containerElement => {
