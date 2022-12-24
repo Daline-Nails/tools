@@ -268,7 +268,20 @@
             });
           })
         }
-        document.write(`<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj5kXqfpKiF34pmONGXZqaD89mj15QQ90&libraries=visualization&callback=initMap"><\/script>`);
+
+        const getMapsKey = () => {
+          try {
+            // Localhost key
+            console.log('Using key:', location.href.split('key=')[1].split('&')[0]);
+            return location.href.split('key=')[1].split('&')[0];
+          } catch(e) {
+            // Prod key
+            console.log('Using PROD key');
+            return 'AIzaSyDj5kXqfpKiF34pmONGXZqaD89mj15QQ90';
+          }
+        };
+
+        document.write(`<script async defer src="https://maps.googleapis.com/maps/api/js?key=${getMapsKey()}&libraries=visualization&callback=initMap"><\/script>`);
       }(function() {
         function supportsArrow() {
           try {
