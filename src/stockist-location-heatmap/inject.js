@@ -11,7 +11,7 @@
     iframe.sandbox = 'allow-scripts allow-same-origin allow-popups';
     iframe.frameborder = '0';
     iframe.classList.add(className);
-    document.getElementById(container).appendChild(iframe);
+    document.querySelector(container).appendChild(iframe);
   };
 }(function() {
   function supportsArrow() {
