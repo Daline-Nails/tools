@@ -323,7 +323,7 @@
             const infowindow = new google.maps.InfoWindow({
               content: `
                 <h1>${seller.name}</h1>
-                <p><a target="_blank" href="${seller.addressLink}">${seller.address}</a></p>
+                <p><a target="_parent" href="${seller.addressLink}">${seller.address}</a></p>
               `,
               maxWidth: 400,
             });
@@ -355,8 +355,9 @@
         const getMapsKey = () => {
           try {
             // Localhost key
-            console.log('Using key:', location.href.split('key=')[1].split('&')[0]);
-            return location.href.split('key=')[1].split('&')[0];
+            const key = location.href.split('key=')[1].split('&')[0].split('#')[0];
+            console.log('Using key:', key);
+            return key;
           } catch(e) {
             // Prod key
             console.log('Using PROD key');
