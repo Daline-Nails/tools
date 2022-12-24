@@ -4,7 +4,7 @@
   const extractAddress = (anchor) => anchor.innerText.split('\n').slice(1).join(', ');
 
   // eslint-disable-next-line no-undef
-  const anchors = [...document.querySelectorAll('#shopify-section-16185589067438de5f a:last-child')];
+  const anchors = [...document.querySelectorAll('#shopify-section-16185589067438de5f a')];
   let stockistList = [];
 
   for (const anchor of anchors) {
