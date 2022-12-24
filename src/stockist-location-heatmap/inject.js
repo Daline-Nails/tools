@@ -11,7 +11,9 @@
     iframe.sandbox = 'allow-scripts allow-same-origin allow-popups';
     iframe.frameborder = '0';
     iframe.classList.add(className);
-    document.querySelector(container).appendChild(iframe);
+    [...document.querySelectorAll(container)].forEach(containerElement => {
+      containerElement.appendChild(iframe);
+    })
   };
 }(function() {
   function supportsArrow() {
