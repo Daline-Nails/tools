@@ -13,8 +13,9 @@
     iframe.frameborder = '0';
     iframe.classList.add(className);
     [...document.querySelectorAll(container)].forEach(containerElement => {
+      containerElement.innerHTML = '';
       containerElement.appendChild(iframe);
-    })
+    });
   };
 }(function() {
   function supportsArrow() {
