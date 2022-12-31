@@ -68,7 +68,7 @@ var registerUtils = globalThis => {
 registerUtils(window);
 
 const logger = window.DalineNails.FeraLogger({
-  debug: true
+  debug: false
 });
 
 // eslint-disable-next-line no-unused-vars
@@ -88,7 +88,7 @@ var FeraWidget = function(widget) {
       var showResult = reviews.show();
 
       const findReviews = () => {
-        logger.log('-------- Running Custom Code v12 --------');
+        logger.log('-------- Running Custom Code v13 --------');
         logger.log('Finding $el', reviews.reviewBlock.$el);
 
         const blockOfReviews = reviews.reviewBlock.$el;
@@ -123,7 +123,7 @@ var FeraWidget = function(widget) {
       window.DalineNails.runScript({
         fn: findReviews,
         exitCondition: hideDates,
-        everyMilliseconds: 100
+        everyMilliseconds: 20
       });
 
       const viewMoreReviewsBtn = [...document.getElementsByClassName('fera-allReviews-showMore-btn')];
@@ -133,7 +133,7 @@ var FeraWidget = function(widget) {
           window.DalineNails.runScript({
             fn: findReviews,
             exitCondition: hideDates,
-            everyMilliseconds: 100
+            everyMilliseconds: 20
           });
         });
       });
