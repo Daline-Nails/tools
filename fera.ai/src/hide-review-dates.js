@@ -68,7 +68,7 @@ var registerUtils = globalThis => {
 registerUtils(window);
 
 const logger = window.DalineNails.FeraLogger({
-  debug: false
+  debug: true
 });
 
 // eslint-disable-next-line no-unused-vars
@@ -88,7 +88,7 @@ var FeraWidget = function(widget) {
       var showResult = reviews.show();
 
       const findReviews = () => {
-        logger.log('-------- Running Custom Code v10 --------');
+        logger.log('-------- Running Custom Code v12 --------');
         logger.log('Finding $el', reviews.reviewBlock.$el);
 
         const blockOfReviews = reviews.reviewBlock.$el;
@@ -108,7 +108,10 @@ var FeraWidget = function(widget) {
 
       const hideDates = result => {
         const reviewElements = result.returnValue;
-        if (reviewElements.length > 0) {
+        const visibleElements = [...reviewElements].filter(dateElement => {
+          return dateElement.style.display !== 'none';
+        });
+        if (visibleElements.length > 0) {
           reviewElements.forEach(element => {
               logger.log('Hiding ->', element);
               return element.style.display = 'none';
@@ -121,6 +124,18 @@ var FeraWidget = function(widget) {
         fn: findReviews,
         exitCondition: hideDates,
         everyMilliseconds: 100
+      });
+
+      const viewMoreReviewsBtn = [...document.getElementsByClassName('fera-allReviews-showMore-btn')];
+      logger.log('Found buttons to view more reviews', viewMoreReviewsBtn);
+      viewMoreReviewsBtn.forEach(viewMoreBtn => {
+        viewMoreBtn.addEventListener('click', () => {
+          window.DalineNails.runScript({
+            fn: findReviews,
+            exitCondition: hideDates,
+            everyMilliseconds: 100
+          });
+        });
       });
 
       return showResult;
