@@ -3,7 +3,7 @@ const root = require('app-root-path');
 
 const app = express();
 
-app.use('/static', express.static('./static'))
+app.use('/static', express.static(`./static`))
 
 app.use(require(`${root}/src/init/app`)());
 app.use(require(`${root}/src/consignation/app`)());
