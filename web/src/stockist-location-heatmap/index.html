@@ -255,9 +255,17 @@
           return locationButton;
         };
 
-        const showInfoWindow = (map, pos) => {
+        const showInfoWindow = (map, position) => {
+
+          if (position.coords.accuracy > 1000) {
+            alert('Could not find your accurate location. Make sure Wifi is enabled.');
+          }
+
           const infoWindow = new google.maps.InfoWindow();
-          infoWindow.setPosition(pos);
+          infoWindow.setPosition({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
           infoWindow.setContent(`
             <div style="padding: 25px; border-radius: 70px;">
               <p>You are around here!</p>
@@ -266,12 +274,34 @@
           `);
           infoWindow.open(map);
 
+          const circle = new google.maps.Circle({
+            strokeColor: "rgb(79, 171, 225)",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "rgb(163, 226, 251)",
+            fillOpacity: 0.35,
+            map,
+            center: { lat: position.coords.latitude, lng: position.coords.longitude },
+            radius: position.coords.accuracy,
+          });
+
           google.maps.event.addListener(map, 'click', function(event) {
             infoWindow.close();
+            circle.setMap(null);
+          });
+          google.maps.event.addListener(circle, 'click', function(event) {
+            infoWindow.close();
+            circle.setMap(null);
+          });
+
+          // Closing the info window removes the circle
+          google.maps.event.addListener(infoWindow, 'closeclick', function(event) {
+            circle.setMap(null);
           });
 
           setTimeout(() => {
             infoWindow.close();
+            circle.setMap(null);
           }, 3000);
         };
 
@@ -298,12 +328,11 @@
             geoLocationBtn.addEventListener('click', () => {
               startSpin(geoLocationBtn)
               navigator.geolocation.getCurrentPosition((position) => {
-                const coordinates = {
+
+                map.setCenter({
                   lat: position.coords.latitude,
                   lng: position.coords.longitude,
-                };
-
-                map.setCenter(coordinates);
+                });
 
                 // Do not zoom out Google Maps location if customer is with a zoom that's closer than before.
                 // Allows for the customer to re-check the location they're in without re-zooming the map back higher
@@ -311,7 +340,7 @@
                   map.setZoom(13);
                 }
 
-                showInfoWindow(map, coordinates);
+                showInfoWindow(map, position);
                 stopSpin(geoLocationBtn);
               }, (e) => {
                 alert(`Error trying to get your location: ${e.message}`);
