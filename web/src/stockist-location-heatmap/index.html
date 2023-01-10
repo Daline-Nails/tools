@@ -308,13 +308,15 @@
 
           return thisBalloon;
         };
-
-        const showCurrentLocationBalloon = (map, position) => {
-          if (position.coords.accuracy > 1000) {
-            alert('Could not find your accurate location. Make sure Wifi is enabled.');
+        Balloon.create = (map, registry) => {
+          for (const registeredBalloon of registry) {
+            registeredBalloon.close();
           }
+
           const balloon = Balloon(map);
-          balloon.open(position);
+          registry.push(balloon);
+
+          return balloon;
         };
 
         const startSpin = (button) => {
@@ -327,6 +329,7 @@
           button.querySelector('.content').innerHTML = locationButtonImgTag;
         };
 
+        const ballonsRegistry = [];
         window.initMap = () => {
           const mapCenter = [-29.830709201476697, 134.6193490235566];
           var map = new google.maps.Map(document.getElementById('map'), {
@@ -352,7 +355,15 @@
                   map.setZoom(13);
                 }
 
-                showCurrentLocationBalloon(map, position);
+                // If location is not accurate, tell the customer but still continue showing the inaccurate balloon
+                // Sometimes the area is the whole city or region, which is not very useful but helps if customer starts from the whole Australia zoom
+                if (position.coords.accuracy > 1000) {
+                  alert('Could not find your accurate location. Make sure Wifi is enabled.');
+                }
+
+                const balloon = Balloon.create(map, ballonsRegistry);
+                balloon.open(position);
+
                 stopSpin(geoLocationBtn);
               }, (e) => {
                 alert(`Error trying to get your location: ${e.message}`);
