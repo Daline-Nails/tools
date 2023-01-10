@@ -258,7 +258,12 @@
         const showInfoWindow = (map, pos) => {
           const infoWindow = new google.maps.InfoWindow();
           infoWindow.setPosition(pos);
-          infoWindow.setContent('<p style="background: #472F92; color: #FFF; padding: 25px;; border-radius: 70px;">⌖ You are around here!</p>');
+          infoWindow.setContent(`
+            <div style="padding: 25px; border-radius: 70px;">
+              <p>You are around here!</p>
+              ${locationButtonImgTag}
+            </<div>
+          `);
           infoWindow.open(map);
 
           google.maps.event.addListener(map, 'click', function(event) {
@@ -270,12 +275,12 @@
           }, 3000);
         };
 
-        const startSpin = (button, content) => {
+        const startSpin = (button) => {
           button.classList.add('spin');
           button.querySelector('.content').innerHTML = locationSearchingBtnImgTag;
         };
 
-        const stopSpin = (button, content) => {
+        const stopSpin = (button) => {
           button.classList.remove('spin');
           button.querySelector('.content').innerHTML = locationButtonImgTag;
         };
@@ -291,7 +296,7 @@
             const geoLocationBtn = createGeolocationButton(map);
             map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(geoLocationBtn);
             geoLocationBtn.addEventListener('click', () => {
-              startSpin(geoLocationBtn, '↻')
+              startSpin(geoLocationBtn)
               navigator.geolocation.getCurrentPosition((position) => {
                 const pos = {
                   lat: position.coords.latitude,
@@ -305,10 +310,10 @@
                 map.setZoom(13);
 
                 showInfoWindow(map, pos);
-                stopSpin(geoLocationBtn, '⌖');
+                stopSpin(geoLocationBtn);
               }, (e) => {
                 alert(`Error trying to get your location: ${e.message}`);
-                stopSpin(geoLocationBtn, '⌖');
+                stopSpin(geoLocationBtn);
               });
             });
           }
