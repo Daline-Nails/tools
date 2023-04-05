@@ -27,6 +27,7 @@
       .control-button {
         position: relative;
         display: block;
+        cursor: pointer;
         border-radius: 2px;
         -webkit-appearance: none;
         font-size: 1em;
@@ -255,7 +256,7 @@
 
         // https://lottiefiles.com/26925-gps-satellite
         const locationSearchingBtnImgTag = '<img src="/static/location-searching.gif">';
-        const locationButtonImgTag = '<img style="width: 30px; height: 30px; display: block; margin: auto auto;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAARVBMVEUAAABrbHJvcHZxcXdvb3V5eX9wcXdwcHdsbHN1dXt3d310d31vb3Z5eYB6en5ub3V3eH9vcHd7e4RrbHNwcHdxcnlzdHvt7KyKAAAAE3RSTlMA/NLPykG7vfdZWFjGMUPXQMMbJjhnywAAALlJREFUOMuNz1sOwjAMRFECtOTZAk28/6WChFWrRM3MfEZHV/GF2TLnQrDp0apkhjXna2aY21wLDNtcvTLsCyUOLt2ZBkHtFwyIjYPLrGwPJlAbBSerWTBApkHINBgh0yBm/clPY30QsP7k985AMIv37rCTk2+y1eNOflhet7/5ww8Hu1dnQQ5KwlCDHJSIoQY52BKGGuSgJAJaEEOJDLQghC1R0IIISqSg1yCGEhg4S9MgWFnX0r9+AJt2H/OzkSuzAAAAAElFTkSuQmCC">';
+        const locationButtonImgTag = '<img style="width: 18px; height: 18px; display: block; margin: auto auto;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAYFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD6T+iNAAAAH3RSTlMAoejf7RMI9dSRioM5MR3j2sWXfV1WUklEPS0nFg4NKL1nwAAAAIlJREFUGNOV0EcOwzAMRFGJVG/uvfD+t4wdK/AiQAL/5duQGPYjzv/S3hgi0+y3LKjrtq01Lh/Z0CQWI0sGt0xep7kkKuekfSa0CukIlcV8irpA70JHnF/UTxdN/UlnhVNwCihXsCsnZIBDghQuk4RKqnFUsgLJchGEHwYvIN7vr1YQCbs+WeK7F+aSCJM6Mfd2AAAAAElFTkSuQmCC">';
 
         const createGeolocationButton = (map) => {
           const locationButton = document.createElement('button');
