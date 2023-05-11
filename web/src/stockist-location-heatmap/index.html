@@ -48,8 +48,14 @@
     </style>
   </head>
   <body>
-    <div id="map"></div>
+    <div
+      id="map"
+      data-zoom="{{ initialPosition.zoom }}"
+      data-lat="{{ initialPosition.lat }}"
+      data-lng="{{ initialPosition.lng }}"
+    ></div>
     <script>
+      const q = document.querySelector.bind(document);
       const localSellers = [
         {
           "name": "Priceline Pharmacy - Dee Why",
@@ -350,10 +356,13 @@
 
         const ballonsRegistry = [];
         window.initMap = () => {
-          const mapCenter = [-29.830709201476697, 134.6193490235566];
+          const INITIAL_MAP_POSITION = {
+            zoom: +q('#map').dataset.zoom,
+            mapCenter: { lat: +q('#map').dataset.lat, lng: +q('#map').dataset.lng }
+          }
           var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 3,
-            center: { lat: mapCenter[0], lng: mapCenter[1] }
+            zoom: INITIAL_MAP_POSITION.zoom,
+            center: INITIAL_MAP_POSITION.mapCenter
           });
 
           if (navigator.geolocation) {
