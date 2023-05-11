@@ -16,12 +16,19 @@ const injectJsContent = fs.readFileSync(`${root}/src/stockist-location-heatmap/i
 module.exports = () => {
   const app = express();
 
+  const extractForwardedForHeader = headerValue => {
+    if (!headerValue) return '';
+    const ipAddresses = headerValue.split(',').map(value => value.trim());
+    return ipAddresses[0];
+  };
+
   app.get('/charts/stockist-location-heatmap', async (req, res) => {
     process.stdout.write(`Request received from ${req.socket.remoteAddress} / ${req.headers['x-forwarded-for']}\n`);
+    const forwardedForHeader = extractForwardedForHeader(req.headers['x-forwarded-for']);
     const isLocal = req.socket.remoteAddress === '::1';
     const requestIP = isLocal
       ? '220.236.183.148' // Use a Sydney IP address for local development
-      : req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+      : forwardedForHeader || req.socket.remoteAddress;
     const response = await maxMindGeoIPClient.city(requestIP);
 
     const ipLocation = {
