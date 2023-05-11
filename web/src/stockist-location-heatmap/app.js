@@ -18,10 +18,11 @@ module.exports = () => {
 
   app.get('/charts/stockist-location-heatmap', async (req, res) => {
     process.stdout.write(`Request received from ${req.socket.remoteAddress} / ${req.headers['x-forwarded-for']}\n`);
-    const remoteAddress = req.socket.remoteAddress === '::1'
+    const isLocal = req.socket.remoteAddress === '::1';
+    const requestIP = isLocal
       ? '220.236.183.148' // Use a Sydney IP address for local development
-      : req.socket.remoteAddress ;
-    const response = await maxMindGeoIPClient.city(remoteAddress);
+      : req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const response = await maxMindGeoIPClient.city(requestIP);
 
     const ipLocation = {
       latitude: response.location.latitude,
