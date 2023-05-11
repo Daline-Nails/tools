@@ -22,25 +22,33 @@ module.exports = () => {
     return ipAddresses[0];
   };
 
+  const fetchIPLocation = async req => {
+    try {
+      const forwardedForHeader = extractForwardedForHeader(req.headers['x-forwarded-for']);
+      const isLocal = req.socket.remoteAddress === '::1';
+      const requestIP = isLocal
+        ? '220.236.183.148' // Use a Sydney IP address for local development
+        : forwardedForHeader || req.socket.remoteAddress;
+      const response = await maxMindGeoIPClient.city(requestIP);
+      process.stdout.write(`City "${response.city.names.en}" found for IP ${requestIP}\n`);
+      return response;
+    } catch(e) {
+      process.stdout.write(`Error trying to get IP for request: ${e.message}\n`);
+      return {};
+    }
+  };
+
   app.get('/charts/stockist-location-heatmap', async (req, res) => {
-    process.stdout.write(`Request received from ${req.socket.remoteAddress} / ${req.headers['x-forwarded-for']}\n`);
-    const forwardedForHeader = extractForwardedForHeader(req.headers['x-forwarded-for']);
-    const isLocal = req.socket.remoteAddress === '::1';
-    const requestIP = isLocal
-      ? '220.236.183.148' // Use a Sydney IP address for local development
-      : forwardedForHeader || req.socket.remoteAddress;
-    const response = await maxMindGeoIPClient.city(requestIP);
+    process.stdout.write(`Request received from remoteAddress: ${req.socket.remoteAddress} / x-forwarded-for: ${req.headers['x-forwarded-for']}\n`);
 
-    const ipLocation = {
-      latitude: response.location.latitude,
-      longitude: response.location.longitude,
-      city: response.city.names.en,
-    };
-
-    process.stdout.write(`City "${ipLocation.city}" found for IP ${requestIP}\n`);
+    const ipLocationResponse = await fetchIPLocation(req);
 
     res.send(StockistsMapPage({
-      initialPosition: resolveInitialPosition(ipLocation),
+      initialPosition: resolveInitialPosition({
+        latitude: ipLocationResponse.location.latitude,
+        longitude: ipLocationResponse.location.longitude,
+        city: ipLocationResponse.city.names.en,
+      }),
     }).to('text/html'));
   });
 
