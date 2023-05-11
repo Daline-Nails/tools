@@ -37,7 +37,7 @@ module.exports = () => {
       city: response.city.names.en,
     };
 
-    process.stdout.write(`City "${ipLocation.city}" found for IP ${remoteAddress}\n`);
+    process.stdout.write(`City "${ipLocation.city}" found for IP ${requestIP}\n`);
 
     res.send(StockistsMapPage({
       initialPosition: resolveInitialPosition(ipLocation),
