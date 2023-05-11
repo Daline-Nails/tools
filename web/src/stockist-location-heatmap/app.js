@@ -30,7 +30,7 @@ module.exports = () => {
         ? '220.236.183.148' // Use a Sydney IP address for local development
         : forwardedForHeader || req.socket.remoteAddress;
       const response = await maxMindGeoIPClient.city(requestIP);
-      process.stdout.write(`City "${response.city.names.en}" found for IP ${requestIP}\n`);
+      process.stdout.write(`GEODATA: City "${response.city.names.en}" found for IP ${requestIP}. Geo lat: ${response.latitude}, lon: ${response.longitude}, accuracy: ${response.location.accuracyRadius}\n`);
       return response;
     } catch(e) {
       process.stdout.write(`Error trying to get IP for request: ${e.message}\n`);
