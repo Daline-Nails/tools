@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "npm i && pm2 startOrReload ecosystem.config.js && pm2 logs",
+    "start": "npm i && . ./.env && pm2 startOrReload ecosystem.config.js && pm2 logs",
     "dev": "eslint '**/*.js' && . ./.env && nodemon start-server.js -e js,html",
     "test": "eslint '**/*.js' && mocha 'src/**/*.spec.js'"
   },
