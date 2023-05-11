@@ -17,6 +17,7 @@ module.exports = () => {
   const app = express();
 
   app.get('/charts/stockist-location-heatmap', async (req, res) => {
+    process.stdout.write(`Request received from ${req.socket.remoteAddress} / ${req.headers['x-forwarded-for']}\n`);
     const remoteAddress = req.socket.remoteAddress === '::1'
       ? '220.236.183.148' // Use a Sydney IP address for local development
       : req.socket.remoteAddress ;
