@@ -9,6 +9,7 @@ const maxMindGeoIPClient = new WebServiceClient('843123', process.env.MAXMIND_LI
 
 const StockistsMapPage = require('./StockistsMapPage');
 const resolveInitialPosition = require('./resolve-initial-position');
+const createIpLocation = require('./create-ip-location');
 
 const testInjectHTMLContent = fs.readFileSync(`${root}/src/stockist-location-heatmap/test-inject.html`, { encoding: 'UTF-8' });
 const injectJsContent = fs.readFileSync(`${root}/src/stockist-location-heatmap/inject.js`, { encoding: 'UTF-8' });
@@ -22,33 +23,40 @@ module.exports = () => {
     return ipAddresses[0];
   };
 
-  const fetchIPLocation = async req => {
+  const getRequestIP = req => {
+    process.stdout.write(`Request received from remoteAddress: ${req.socket.remoteAddress} / x-forwarded-for: ${req.headers['x-forwarded-for']}\n`);
     try {
       const forwardedForHeader = extractForwardedForHeader(req.headers['x-forwarded-for']);
       const isLocal = req.socket.remoteAddress === '::1';
-      const requestIP = isLocal
-        ? '220.236.183.148' // Use a Sydney IP address for local development
+      return isLocal
+        ? '121.44.8.222' // Use a Sydney IP address for local development
         : forwardedForHeader || req.socket.remoteAddress;
-      const response = await maxMindGeoIPClient.city(requestIP);
-      process.stdout.write(`GEODATA: City "${response.city.names.en}" found for IP ${requestIP}. Geo lat: ${response.location.latitude}, lon: ${response.location.longitude}, accuracy: ${response.location.accuracyRadius}\n`);
-      return response;
     } catch(e) {
       process.stdout.write(`Error trying to get IP for request: ${e.message}\n`);
-      return {};
+      return '';
     }
   };
 
-  app.get('/charts/stockist-location-heatmap', async (req, res) => {
-    process.stdout.write(`Request received from remoteAddress: ${req.socket.remoteAddress} / x-forwarded-for: ${req.headers['x-forwarded-for']}\n`);
+  const fetchIPResponse = async ipAddress => {
+    const ipResponse = {
+      ipAddress: ipAddress,
+      maxMindResponse: {}
+    };
 
-    const ipLocationResponse = await fetchIPLocation(req);
+    try {
+      ipResponse.maxMindResponse = await maxMindGeoIPClient.city(ipAddress);
+    } catch(e) {
+      process.stdout.write(`Error trying to fetch response for IP ${ipAddress}: ${e.message}\n`);
+    }
+
+    return ipResponse;
+  };
+
+  app.get('/charts/stockist-location-heatmap', async (req, res) => {
+    const ipResponse = await fetchIPResponse(getRequestIP(req));
 
     res.send(StockistsMapPage({
-      initialPosition: resolveInitialPosition({
-        latitude: ipLocationResponse.location.latitude,
-        longitude: ipLocationResponse.location.longitude,
-        city: ipLocationResponse.city.names.en,
-      }),
+      initialPosition: resolveInitialPosition(createIpLocation(ipResponse)),
     }).to('text/html'));
   });
 
