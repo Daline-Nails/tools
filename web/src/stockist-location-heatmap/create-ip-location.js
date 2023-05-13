@@ -5,8 +5,11 @@ module.exports = ipResponse => {
   const longitude = maxMindResponse.location && maxMindResponse.location.longitude ? maxMindResponse.location.longitude : 0;
   const accuracy = maxMindResponse.location && maxMindResponse.location.accuracyRadius ? maxMindResponse.location.accuracyRadius : 9999999;
 
-  process.stdout.write(`GEODATA MAXMIND RESPONSE: ${JSON.stringify(ipResponse.maxMindResponse, null, 4)}\n`);
-  process.stdout.write(`GEODATA: City "${city}" found for IP ${ipResponse.ipAddress}. Geo lat: ${latitude}, lon: ${longitude}, accuracy: ${accuracy}km\n`);
+  // Only log cities that I haven't yet seen in the logs
+  if (!['', 'Montenegro', 'Sydney', 'Brisbane', 'Gold Coast', 'Perth'].includes(city)) {
+    process.stdout.write(`GEODATA MAXMIND RESPONSE: ${JSON.stringify(ipResponse.maxMindResponse, null, 4)}\n`);
+    process.stdout.write(`GEODATA: City "${city}" found for IP ${ipResponse.ipAddress}. Geo lat: ${latitude}, lon: ${longitude}, accuracy: ${accuracy}km\n`);
+  }
 
   return {
     latitude: latitude,

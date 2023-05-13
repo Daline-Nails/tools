@@ -4,7 +4,7 @@ module.exports = ({ city, latitude, longitude, accuracy }) => {
   if (accuracy > 100) {
     return AUSTRALIA_WIDE;
   }
-  return city === 'Sydney'
+  return city === 'Sydney' || city === 'Brisbane' || city === 'Gold Coast' || city === 'Perth'
     ? { lat: latitude, lng: longitude, zoom: 9 }
     : AUSTRALIA_WIDE;
 };
