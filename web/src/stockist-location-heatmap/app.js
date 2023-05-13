@@ -29,7 +29,7 @@ module.exports = () => {
       const forwardedForHeader = extractForwardedForHeader(req.headers['x-forwarded-for']);
       const isLocal = req.socket.remoteAddress === '::1';
       return isLocal
-        ? '121.44.8.222' // Use a Sydney IP address for local development
+        ? '101.176.150.225' // Use a Sydney IP address for local development
         : forwardedForHeader || req.socket.remoteAddress;
     } catch(e) {
       process.stdout.write(`Error trying to get IP for request: ${e.message}\n`);
