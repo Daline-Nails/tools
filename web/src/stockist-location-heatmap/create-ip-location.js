@@ -6,7 +6,12 @@ module.exports = ipResponse => {
   const accuracy = maxMindResponse.location && maxMindResponse.location.accuracyRadius ? maxMindResponse.location.accuracyRadius : 9999999;
 
   // Only log cities that I haven't yet seen in the logs
-  if (!['', 'Montenegro', 'Sydney', 'Brisbane', 'Gold Coast', 'Perth'].includes(city)) {
+  const isCityBlacklisted = ['', 'Montenegro', 'Sydney', 'Brisbane', 'Gold Coast', 'Perth'].includes(city);
+
+  // Ignore logging continents in which we have no stockists
+  const isContinentBlacklisted = ['EU', 'NA'].includes(maxMindResponse.continent.code);
+
+  if (!isCityBlacklisted && !isContinentBlacklisted) {
     process.stdout.write(`GEODATA MAXMIND RESPONSE: ${JSON.stringify(ipResponse.maxMindResponse, null, 4)}\n`);
     process.stdout.write(`GEODATA: City "${city}" found for IP ${ipResponse.ipAddress}. Geo lat: ${latitude}, lon: ${longitude}, accuracy: ${accuracy}km\n`);
   }
