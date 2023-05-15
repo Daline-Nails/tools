@@ -9,7 +9,7 @@ module.exports = ipResponse => {
   const isCityBlacklisted = ['', 'Montenegro', 'Sydney', 'Brisbane', 'Gold Coast', 'Perth'].includes(city);
 
   // Ignore logging continents in which we have no stockists
-  const isContinentBlacklisted = ['EU', 'NA'].includes(maxMindResponse.continent.code);
+  const isContinentBlacklisted = ['EU', 'NA', 'AS'].includes(maxMindResponse.continent.code);
 
   if (!isCityBlacklisted && !isContinentBlacklisted) {
     process.stdout.write(`GEODATA MAXMIND RESPONSE: ${JSON.stringify(ipResponse.maxMindResponse, null, 4)}\n`);
