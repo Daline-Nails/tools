@@ -29,7 +29,7 @@ module.exports = () => {
       const forwardedForHeader = extractForwardedForHeader(req.headers['x-forwarded-for']);
       const isLocal = req.socket.remoteAddress === '::1';
       return isLocal
-        ? '1.145.174.38' // Use a Sydney IP address for local development
+        ? '220.236.183.148' // Default IP address for local development
         : forwardedForHeader || req.socket.remoteAddress;
     } catch(e) {
       process.stdout.write(`Error trying to get IP for request: ${e.message}\n`);
@@ -57,6 +57,7 @@ module.exports = () => {
 
     res.send(StockistsMapPage({
       initialPosition: resolveInitialPosition(createIpLocation(ipResponse)),
+      stores: JSON.stringify(require('./STORES.json'))
     }).to('text/html'));
   });
 

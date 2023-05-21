@@ -10,6 +10,7 @@
     "app-root-path": "3.0.0",
     "dinero.js": "1.9.1",
     "express": "4.17.1",
+    "geolib": "^3.3.3",
     "handlebars": "4.7.6"
   },
   "devDependencies": {
