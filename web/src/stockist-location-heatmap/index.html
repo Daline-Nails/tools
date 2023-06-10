@@ -227,8 +227,8 @@
             radius: 50
           });
 
-          stores.forEach(seller => {
-            const infowindow = new google.maps.InfoWindow({
+          const allInfoWindows = stores.map(seller => {
+            const infoWindow = new google.maps.InfoWindow({
               content: `
                 <h1>${seller.name}</h1>
                 <!-- padding: 4px to prevent cutting right side of cta box shadow -->
@@ -258,15 +258,23 @@
               title: seller.name,
             });
             marker.addListener('click', () => {
-              infowindow.open({
+              infoWindow.open({
                 anchor: marker,
                 map,
               });
+              closeAllInfoWindowsExcept(infoWindow);
             });
             google.maps.event.addListener(map, 'click', function(event) {
-              infowindow.close();
+              infoWindow.close();
             });
-          })
+            return infoWindow;
+          });
+
+          function closeAllInfoWindowsExcept(thisWindow) {
+            allInfoWindows
+              .filter(infoWindow => infoWindow !== thisWindow)
+              .forEach(otherInfoWindow => otherInfoWindow.close());
+          };
         }
 
         const getMapsKey = () => {
