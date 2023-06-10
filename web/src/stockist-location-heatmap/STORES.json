@@ -63,6 +63,15 @@
     ]
   },
   {
+    "name": "Priceline Baulkham Hills",
+    "address": "30/375-383 Windsor Rd, Baulkham Hills NSW",
+    "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Baulkham+Hills/@-33.7590463,150.9914068,21z/data=!4m6!3m5!1s0x6b12a22f02f94517:0xcde3c3f9a2d587e8!8m2!3d-33.7590552!4d150.9915552!16s%2Fg%2F11b7k6pq70?entry=ttu",
+    "latLng": [
+      -33.7590463,
+      150.9914068
+    ]
+  },
+  {
     "name": "Roula Arkilo Beauty Clinic",
     "address": "Shop 54, Excelsior St., Merrylands",
     "addressLink": "https://www.google.com/maps/place/54+Excelsior+St,+Merrylands+NSW+2160/@-33.8431805,151.0023543,21z/data=!4m13!1m7!3m6!1s0x6b12bcd64472482f:0x4104926f628d4238!2s54+Excelsior+St,+Merrylands+NSW+2160!3b1!8m2!3d-33.8431805!4d151.0024911!3m4!1s0x6b12bcd64472482f:0x4104926f628d4238!8m2!3d-33.8431805!4d151.0024911",
