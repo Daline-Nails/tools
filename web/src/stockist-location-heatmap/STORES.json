@@ -1,6 +1,6 @@
 [
   {
-    "name": "Priceline Pharmacy - Dee Why",
+    "name": "Priceline Dee Why",
     "storeType": "PRICELINE",
     "address": "Dee Why Grand Shopping Centre, 5 6, 834 Pittwater Rd, Dee Why",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Dee+Why/@-33.7552787,151.2847652,21z/data=!4m5!3m4!1s0x6b12aa889f5aac63:0x8f20e25889d4ac64!8m2!3d-33.7552846!4d151.2848917",
@@ -10,7 +10,7 @@
     ]
   },
   {
-    "name": "Priceline Pharmacy - Warringah Mall",
+    "name": "Priceline Warringah Mall",
     "storeType": "PRICELINE",
     "address": "Floor G, Westfield Warringah Mall - Old Pittwater Rd, Brookvale",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Warringah+Mall/@-33.7684665,151.2653063,21z/data=!3m1!5s0x6b12aa445584b8d7:0x64dca853621a2f65!4m5!3m4!1s0x6b12aa457eabfea9:0xe75319f8af973c5b!8m2!3d-33.768477!4d151.265439",
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "name": "Priceline Pharmacy - Mona Vale",
+    "name": "Priceline Mona Vale",
     "storeType": "PRICELINE",
     "address": "Pittwater Pl, 8 & 9/10 Park St, Mona Vale",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Mona+Vale/@-33.6759657,151.305264,21z/data=!3m1!5s0x6b0d54a2f0e6a793:0x21e9fe16ff964c9b!4m6!3m5!1s0x6b0d54a2e98aa1c5:0x65954f99fd3ae3de!8m2!3d-33.6759825!4d151.3053898!16s%2Fg%2F1td6mt9g",
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "name": "Priceline Pharmacy Beecroft",
+    "name": "Priceline Beecroft",
     "storeType": "PRICELINE",
     "address": "16-24 Hannah St, Beecroft",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Beecroft/@-33.7491962,151.0646031,21z/data=!4m5!3m4!1s0x6b12a6c0b5add02d:0xeca6edf25f7d16f8!8m2!3d-33.7492062!4d151.0647225",
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "name": "Priceline Pharmacy Gordon",
+    "name": "Priceline Gordon",
     "storeType": "PRICELINE",
     "address": "Gordon Centre, Shop 1/808 Pacific Hwy, Gordon",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Gordon/@-33.7551486,151.1522735,21z/data=!4m5!3m4!1s0x6b12a8889d67b85f:0x353f3e63667d6098!8m2!3d-33.7551603!4d151.1523935",
