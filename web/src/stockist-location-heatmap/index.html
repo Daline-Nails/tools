@@ -42,6 +42,34 @@
         padding-left: 0; /* 5 */
       }
 
+      /*
+        1. Remove shadow border for Samsung devices
+        2. Remove default border width and style for Chrome on Windows
+        3. 25 Nov 2021: After a Safari update, the time slot buttons in time slots view
+                        became bold in Chroma and Safari on iPhone. I don't know exactly
+                        why but I'm reverting the font-weight to "normal" to make sure
+                        nothing else changes the font-weight and it stays consistent with
+                        the styleguide.
+      */
+      .cta-link {
+        position: relative;
+        padding: 15px 15px 15px 15px;
+        color: #FFF;
+        border-radius: 15px;
+        margin: -1px auto;
+        display: block;
+        text-align: left;
+        border-color: #8080D7;
+        box-shadow: 3px 3px 3px 0px #dbd3ee;
+        -webkit-appearance: none;
+        font-size: 1em;
+        border-width: 1px; /* 2 */
+        border-style: solid; /* 2 */
+        background-color: #53469E; /* 1 */
+        font-weight: normal; /* 3 */
+        text-decoration: none;
+      }
+
       .spin .content {
         display: block;
       }
@@ -203,7 +231,13 @@
             const infowindow = new google.maps.InfoWindow({
               content: `
                 <h1>${seller.name}</h1>
-                <p><a target="_parent" href="${seller.addressLink}">${seller.address}</a></p>
+                <!-- padding: 4px to prevent cutting right side of cta box shadow -->
+                <p style="padding-right: 4px;">
+                  <a target="_parent" href="${seller.addressLink}" class="cta-link">
+                    <b>Get Directions:</b><br>
+                    ${seller.address}
+                  </a>
+                </p>
               `,
               maxWidth: 400,
             });
