@@ -1,6 +1,7 @@
 [
   {
     "name": "Priceline Pharmacy - Dee Why",
+    "storeType": "PRICELINE",
     "address": "Dee Why Grand Shopping Centre, 5 6, 834 Pittwater Rd, Dee Why",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Dee+Why/@-33.7552787,151.2847652,21z/data=!4m5!3m4!1s0x6b12aa889f5aac63:0x8f20e25889d4ac64!8m2!3d-33.7552846!4d151.2848917",
     "latLng": [
@@ -10,6 +11,7 @@
   },
   {
     "name": "Priceline Pharmacy - Warringah Mall",
+    "storeType": "PRICELINE",
     "address": "Floor G, Westfield Warringah Mall - Old Pittwater Rd, Brookvale",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Warringah+Mall/@-33.7684665,151.2653063,21z/data=!3m1!5s0x6b12aa445584b8d7:0x64dca853621a2f65!4m5!3m4!1s0x6b12aa457eabfea9:0xe75319f8af973c5b!8m2!3d-33.768477!4d151.265439",
     "latLng": [
@@ -19,6 +21,7 @@
   },
   {
     "name": "Priceline Pharmacy - Mona Vale",
+    "storeType": "PRICELINE",
     "address": "Pittwater Pl, 8 & 9/10 Park St, Mona Vale",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Mona+Vale/@-33.6759657,151.305264,21z/data=!3m1!5s0x6b0d54a2f0e6a793:0x21e9fe16ff964c9b!4m6!3m5!1s0x6b0d54a2e98aa1c5:0x65954f99fd3ae3de!8m2!3d-33.6759825!4d151.3053898!16s%2Fg%2F1td6mt9g",
     "latLng": [
@@ -28,6 +31,7 @@
   },
   {
     "name": "Lawler's WholeLife Pharmacy and Healthfoods - Dee Why",
+    "storeType": "OTHER",
     "address": "Shop 9B, 27-33 Oaks Ave, Dee Why",
     "addressLink": "https://www.google.com/maps/place/Lawler's+WholeLife+Pharmacy+and+Healthfoods+-+Dee+Why/@-33.7539272,151.2874423,21z/data=!4m5!3m4!1s0x6b12aa84522f350d:0x86235a52bd998030!8m2!3d-33.7539389!4d151.287567",
     "latLng": [
@@ -37,6 +41,7 @@
   },
   {
     "name": "Dee Why Health Care Pharmacy - Compounding Chemist",
+    "storeType": "OTHER",
     "address": "852 Pittwater Rd, Dee Why",
     "addressLink": "https://www.google.com/maps/place/852+Pittwater+Rd,+Dee+Why+NSW+2099/@-33.7541704,151.2846952,21z/data=!4m5!3m4!1s0x6b12aa861763c28d:0xc1cf0de19dd71def!8m2!3d-33.7541804!4d151.2848233",
     "latLng": [
@@ -46,6 +51,7 @@
   },
   {
     "name": "Elevate Hub",
+    "storeType": "OTHER",
     "address": "16B Park St, Mona Vale",
     "addressLink": "https://www.google.com/maps/place/Elevate+Hub/@-33.6756247,151.3043925,21z/data=!4m5!3m4!1s0x6b0d54a28eea4ba5:0xad504c0ec98f779f!8m2!3d-33.675625!4d151.304511",
     "latLng": [
@@ -55,6 +61,7 @@
   },
   {
     "name": "Priceline Pharmacy Beecroft",
+    "storeType": "PRICELINE",
     "address": "16-24 Hannah St, Beecroft",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Beecroft/@-33.7491962,151.0646031,21z/data=!4m5!3m4!1s0x6b12a6c0b5add02d:0xeca6edf25f7d16f8!8m2!3d-33.7492062!4d151.0647225",
     "latLng": [
@@ -64,6 +71,7 @@
   },
   {
     "name": "Priceline Baulkham Hills",
+    "storeType": "PRICELINE",
     "address": "30/375-383 Windsor Rd, Baulkham Hills NSW",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Baulkham+Hills/@-33.7590463,150.9914068,21z/data=!4m6!3m5!1s0x6b12a22f02f94517:0xcde3c3f9a2d587e8!8m2!3d-33.7590552!4d150.9915552!16s%2Fg%2F11b7k6pq70?entry=ttu",
     "latLng": [
@@ -73,6 +81,7 @@
   },
   {
     "name": "Roula Arkilo Beauty Clinic",
+    "storeType": "OTHER",
     "address": "Shop 54, Excelsior St., Merrylands",
     "addressLink": "https://www.google.com/maps/place/54+Excelsior+St,+Merrylands+NSW+2160/@-33.8431805,151.0023543,21z/data=!4m13!1m7!3m6!1s0x6b12bcd64472482f:0x4104926f628d4238!2s54+Excelsior+St,+Merrylands+NSW+2160!3b1!8m2!3d-33.8431805!4d151.0024911!3m4!1s0x6b12bcd64472482f:0x4104926f628d4238!8m2!3d-33.8431805!4d151.0024911",
     "latLng": [
@@ -82,6 +91,7 @@
   },
   {
     "name": "Face Mediskin Rouse Hill",
+    "storeType": "OTHER",
     "address": "4/591 Withers Road, Rouse Hill, facemediskin.com.au",
     "addressLink": "https://www.google.com/maps/place/Face+Mediskin/@-33.6741343,150.9205898,21z/data=!4m5!3m4!1s0x6b129f1bc21bd887:0xd7a69ecd165d157b!8m2!3d-33.6741265!4d150.9207132",
     "latLng": [
@@ -91,6 +101,7 @@
   },
   {
     "name": "Face Mediskin Bella Vista",
+    "storeType": "OTHER",
     "address": "7/33 Lexington Drive, Bella Vista, facemediskin.com.au",
     "addressLink": "https://www.google.com/maps/place/Face+Mediskin/@-33.7325342,150.9457998,21z/data=!3m1!5s0x6b129f587f84b4c3:0x51be12cf81dd5de4!4m5!3m4!1s0x6b129f7d78bc23bf:0xca2d2039affdc8a4!8m2!3d-33.7325387!4d150.9459158",
     "latLng": [
@@ -100,6 +111,7 @@
   },
   {
     "name": "Prodermal Rouse Hill",
+    "storeType": "OTHER",
     "address": "4/591 Withers Road, Rouse Hill",
     "addressLink": "https://www.google.com/maps/place/Prodermal+Rouse+Hill/@-33.6741207,150.9205907,21z/data=!4m5!3m4!1s0x6b129fd2a5713fab:0xab22262471f8b49d!8m2!3d-33.6741248!4d150.9207157",
     "latLng": [
@@ -109,6 +121,7 @@
   },
   {
     "name": "Priceline Pharmacy Gordon",
+    "storeType": "PRICELINE",
     "address": "Gordon Centre, Shop 1/808 Pacific Hwy, Gordon",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Gordon/@-33.7551486,151.1522735,21z/data=!4m5!3m4!1s0x6b12a8889d67b85f:0x353f3e63667d6098!8m2!3d-33.7551603!4d151.1523935",
     "latLng": [
@@ -118,6 +131,7 @@
   },
   {
     "name": "Priceline Green Valley",
+    "storeType": "PRICELINE",
     "address": "The Valley Plaza 2, 189 Wilson Rd, Green Valley NSW",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Green+Valley/@-33.907253,150.8678559,21z/data=!4m15!1m8!3m7!1s0x6b1294738de848c7:0x7f1db512c8b47cf6!2sPriceline+Pharmacy+Green+Valley!8m2!3d-33.9072647!4d150.8679732!10e5!16s%2Fg%2F1td4dpzs!3m5!1s0x6b1294738de848c7:0x7f1db512c8b47cf6!8m2!3d-33.9072647!4d150.8679732!16s%2Fg%2F1td4dpzs?entry=ttu",
     "latLng": [
@@ -127,6 +141,7 @@
   },
   {
     "name": "Priceline Macquarie Centre",
+    "storeType": "PRICELINE",
     "address": "U11, Macquarie Centre Cnr Herring & Waterloo Roads, North Ryde",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Macquarie+Centre/@-33.7772236,151.12084,21z/data=!4m14!1m7!3m6!1s0x6b12a60dae0f13ab:0x690ee0d1af6bbb7a!2sPriceline+Pharmacy+Macquarie+Centre!8m2!3d-33.7772242!4d151.120968!16s%2Fg%2F1tm88ldf!3m5!1s0x6b12a60dae0f13ab:0x690ee0d1af6bbb7a!8m2!3d-33.7772242!4d151.120968!16s%2Fg%2F1tm88ldf",
     "latLng": [
@@ -136,6 +151,7 @@
   },
   {
     "name": "Amcal Pharmacy Macquarie Centre",
+    "storeType": "OTHER",
     "address": "Shop/3343 Herring Rd, North Ryde NSW 2113",
     "addressLink": "https://www.google.com/maps/place/Amcal+Pharmacy/@-33.7787717,151.1205282,21z/data=!4m6!3m5!1s0x6b12a60da61bc157:0xc25b986c1f945ccf!8m2!3d-33.7787759!4d151.1206735!16s%2Fg%2F11cnn4cjxn",
     "latLng": [
@@ -145,6 +161,7 @@
   },
   {
     "name": "Priceline Roselands",
+    "storeType": "PRICELINE",
     "address": "Shop L25 Lower Ground Floor Roselands Shopping Centre, Roselands Dr, Roselands",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Roselands/@-33.9343334,151.0686073,21z/data=!3m1!5s0x6b12bbe01e925039:0x55f0c5885307ac55!4m5!3m4!1s0x6b12bbe01e4950e7:0x80c53c8837e36fce!8m2!3d-33.9343379!4d151.0687441",
     "latLng": [
@@ -154,6 +171,7 @@
   },
   {
     "name": "KR Beauty Brazil",
+    "storeType": "OTHER",
     "address": "7/635 Gardeners Rd, Mascot",
     "addressLink": "https://www.google.com/maps/place/KR+BEAUTY+BRAZIL+PTY+LTD/@-33.9206747,151.1888526,21z/data=!4m5!3m4!1s0x6b12b192f4af0591:0x3a7a59c657ed0ead!8m2!3d-33.9206865!4d151.1889829",
     "latLng": [
@@ -163,6 +181,7 @@
   },
   {
     "name": "Neo Nails - Top Ryde",
+    "storeType": "OTHER",
     "address": "Shop 3020, 109-129 Blaxland Rd, Ryde",
     "addressLink": "https://www.google.com/maps/place/Neonails/@-33.8121549,151.105821,21z/data=!3m1!5s0x6b12a501a97763d5:0x5a9e25e75c1c53e9!4m5!3m4!1s0x6b12a5a551a1dab3:0x78c7ea9323c0487c!8m2!3d-33.8121658!4d151.1059295",
     "latLng": [
@@ -172,6 +191,7 @@
   },
   {
     "name": "Nailed on Beauty & Tanning",
+    "storeType": "OTHER",
     "address": "Shop 8B/25 Ralston Ave, Belrose",
     "addressLink": "https://www.google.com/maps/place/Nailed+on+Beauty+%26+Tanning/@-33.7284951,151.2167606,21z/data=!4m5!3m4!1s0x6b12a9eb708ccb01:0xb978dc6825e9866b!8m2!3d-33.7285097!4d151.2168732",
     "latLng": [
@@ -181,6 +201,7 @@
   },
   {
     "name": "Priceline Kincumber - Central Coast",
+    "storeType": "PRICELINE",
     "address": "Kincumber Village Shopping Centre, Kincumber NSW",
     "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Kincumber/@-33.4671017,151.3816134,18z/data=!4m6!3m5!1s0x6b72b5a44f56932f:0xe25221a8dfa46a87!8m2!3d-33.4670301!4d151.3827507!16s%2Fg%2F11cjnngl4m",
     "latLng": [
@@ -190,6 +211,7 @@
   },
   {
     "name": "Unique Beauty & Style - Perth",
+    "storeType": "OTHER",
     "address": "649 Beaufort St, Mount Lawley WA",
     "addressLink": "https://www.google.com/maps/place/Unique+Beauty+%26+Style/@-31.9343853,115.8714647,21z/data=!4m6!3m5!1s0x2a32bacff3715555:0x5751d524e617a90b!8m2!3d-31.9343853!4d115.8716256!16s%2Fg%2F11f4lc2q7d",
     "latLng": [
@@ -199,6 +221,7 @@
   },
   {
     "name": "MD Advanced Beauty Education - Adelaide",
+    "storeType": "OTHER",
     "address": "25 Mann Terrace, North Adelaide SA",
     "addressLink": "https://www.google.com/maps/place/25+Mann+Terrace,+North+Adelaide+SA+5006/@-34.9049513,138.6102868,21z/data=!4m5!3m4!1s0x6ab0c93d11511143:0xdebc4cf073ab5407!8m2!3d-34.9049499!4d138.6104073",
     "latLng": [
@@ -208,6 +231,7 @@
   },
   {
     "name": "Clare's Couture Nailz - QLD",
+    "storeType": "OTHER",
     "address": "5829 Coveside Lane, Sanctuary Cove QLD",
     "addressLink": "https://www.google.com/maps/place/Clare's+Couture+Nailz/@-27.8579442,153.3690328,21z/data=!4m5!3m4!1s0x6b911376eb482fa7:0x980133712107f4bc!8m2!3d-27.8579509!4d153.3691631",
     "latLng": [
@@ -217,6 +241,7 @@
   },
   {
     "name": "All About Bodies - QLD",
+    "storeType": "OTHER",
     "address": "Shop 2/171 Surf Parade, Broadbeach QLD",
     "addressLink": "https://www.google.com/maps/place/All+About+Bodies+Total+Beauty/@-28.0200171,153.4310936,21z/data=!4m5!3m4!1s0x6b9105038a3a8bb1:0xd57fa0e463f62a0c!8m2!3d-28.020027!4d153.4312112",
     "latLng": [
