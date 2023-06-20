@@ -130,6 +130,16 @@
     ]
   },
   {
+    "name": "Priceline Mascot",
+    "storeType": "PRICELINE",
+    "address": "Mascot Central, 7-9/33 Kent Rd, Mascot NSW",
+    "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Mascot/@-33.9224772,151.1842077,21z/data=!3m1!5s0x6b12b055462241b5:0x6832a17bae8fc425!4m6!3m5!1s0x6b12b0556b2cdb3d:0x30337bc7f3ce3323!8m2!3d-33.9224772!4d151.1843686!16s%2Fg%2F11cmyk3lgq?entry=ttu",
+    "latLng": [
+      -33.9224772,
+      151.1842077
+    ]
+  },
+  {
     "name": "Priceline Green Valley",
     "storeType": "PRICELINE",
     "address": "The Valley Plaza 2, 189 Wilson Rd, Green Valley NSW",
