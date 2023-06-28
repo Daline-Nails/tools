@@ -1,97 +1,99 @@
 <span style="font-size: 80%">Offer Expires on <span class="dn-offer-expiry"></span> (<span class="dn-countdown"></span>)</span>
 <script>
-  // ------------------------------------------------------------------------
-  // STATIC DATE STRING
-  // ------------------------------------------------------------------------
-  var EXPIRY_DATE = new Date(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    new Date().getDate(),
-    23, // hour
-    59, // minute
-    59 // second
-  );
+  (function(){
+    // ------------------------------------------------------------------------
+    // STATIC DATE STRING
+    // ------------------------------------------------------------------------
+    var EXPIRY_DATE = new Date(
+      2023, // year
+      5, // month
+      30,  // day
+      23, // hour
+      59, // minute
+      59 // second
+    );
 
-  const CountDown = (expiryDate) => {
-    var MILLIS_PER_HOUR = 1000 * 60 * 60;
-    var MILLIS_PER_MINUTE = 1000 * 60;
-    var MILLIS_PER_SECOND = 1000;
+    var CountDown = function(expiryDate) {
+      var MILLIS_PER_HOUR = 1000 * 60 * 60;
+      var MILLIS_PER_MINUTE = 1000 * 60;
+      var MILLIS_PER_SECOND = 1000;
 
-    var hoursFrom = function(now, target) {
-      var hoursFromTarget = (target.getTime() - now.getTime()) / MILLIS_PER_HOUR;
-      var hours = Math.floor(hoursFromTarget);
-      return hours < 10 ? '0' + Math.round(hours) : Math.round(hours);
-    };
-    var minutesFrom = function(now, target) {
-      var minutesFromTarget = (target.getTime() - now.getTime()) / MILLIS_PER_MINUTE;
-      var minutes = Math.floor(minutesFromTarget % 60);
-      return minutes < 10 ? '0' + minutes : minutes;
-    };
-    var secondsFrom = function(now, target) {
-      var secondsFromTarget = (target.getTime() - now.getTime()) / MILLIS_PER_SECOND;
-      var seconds = Math.floor(secondsFromTarget % 60);
-      return seconds < 10 ? '0' + seconds : seconds;
-    };
-
-    return {
-      tick: (now = new Date()) => {
-        return hoursFrom(now, expiryDate) + ':' + minutesFrom(now, expiryDate) + ':' + secondsFrom(now, expiryDate);
-      }
-    };
-  };
-
-  // ------------------------------------------------------------------------
-  // STATIC DATE STRING
-  // ------------------------------------------------------------------------
-  (function() {
-    var day = EXPIRY_DATE.getDate();
-    var month = EXPIRY_DATE.toLocaleString("en", { month: "short" });
-    var week = EXPIRY_DATE.toLocaleString("en", { weekday: "short" });
-
-    document.querySelector('.dn-offer-expiry').innerHTML = week + ', ' + day + ' ' + month + ' 11:59pm';
-  }());
-
-  // ------------------------------------------------------------------------
-  // COUNTDOWN
-  // ------------------------------------------------------------------------
-  (function() {
-    const countdown = CountDown(EXPIRY_DATE);
-
-    var render = function() {
-      document.querySelector('.dn-countdown').innerHTML = countdown.tick();
-    };
-
-    setInterval(function() { render(); }, 1000);
-    render(); // Initial render to avoid FOUC
-
-    // Tests - Only run outside LP
-    if (location.href.indexOf('https://holiday.dalinenails.com') === -1) {
-      var expect = ({ title, actual, expected }) => {
-        return actual === expected
-          ? title + ': ✅ PASS'
-          : title + ': ❌ FAIL. Got ->> ' + actual
+      var hoursFrom = function(now, target) {
+        var hoursFromTarget = (target.getTime() - now.getTime()) / MILLIS_PER_HOUR;
+        var hours = Math.floor(hoursFromTarget);
+        return hours < 10 ? '0' + Math.round(hours) : Math.round(hours);
       };
-      console.log(
-        expect({
-          title: 'round minutes to floor (avoids 07:60:59)',
-          expected: '07:59:59',
-          actual: CountDown(new Date(2023, 5, 28, 23, 59, 59)).tick(new Date(2023, 5, 28, 16, 0, 0))
-        })
-      );
-      console.log(
-        expect({
-          title: 'rounds minute before rendering (avoids 08:010:59)',
-          expected: '08:09:59',
-          actual: CountDown(new Date(2023, 5, 28, 23, 59, 59)).tick(new Date(2023, 5, 28, 15, 50, 0))
-        })
-      );
-      console.log(
-        expect({
-          title: 'rounds second before rendering (avoids 08:08:010)',
-          expected: '08:08:10',
-          actual: CountDown(new Date(2023, 5, 28, 23, 59, 59, 0)).tick(new Date(2023, 5, 28, 15, 51, 49, 0))
-        })
-      );
-    }
+      var minutesFrom = function(now, target) {
+        var minutesFromTarget = (target.getTime() - now.getTime()) / MILLIS_PER_MINUTE;
+        var minutes = Math.floor(minutesFromTarget % 60);
+        return minutes < 10 ? '0' + minutes : minutes;
+      };
+      var secondsFrom = function(now, target) {
+        var secondsFromTarget = (target.getTime() - now.getTime()) / MILLIS_PER_SECOND;
+        var seconds = Math.floor(secondsFromTarget % 60);
+        return seconds < 10 ? '0' + seconds : seconds;
+      };
+
+      return {
+        tick: function(now = new Date()) {
+          return hoursFrom(now, expiryDate) + ':' + minutesFrom(now, expiryDate) + ':' + secondsFrom(now, expiryDate);
+        }
+      };
+    };
+
+    // ------------------------------------------------------------------------
+    // STATIC DATE STRING
+    // ------------------------------------------------------------------------
+    (function() {
+      var day = EXPIRY_DATE.getDate();
+      var month = EXPIRY_DATE.toLocaleString("en", { month: "short" });
+      var week = EXPIRY_DATE.toLocaleString("en", { weekday: "short" });
+
+      document.querySelector('.dn-offer-expiry').innerHTML = week + ', ' + day + ' ' + month + ' 11:59pm';
+    }());
+
+    // ------------------------------------------------------------------------
+    // COUNTDOWN
+    // ------------------------------------------------------------------------
+    (function() {
+      var countdown = CountDown(EXPIRY_DATE);
+
+      var render = function() {
+        document.querySelector('.dn-countdown').innerHTML = countdown.tick();
+      };
+
+      setInterval(function() { render(); }, 1000);
+      render(); // Initial render to avoid FOUC
+
+      // Tests - Only run outside LP
+      if (location.href.indexOf('https://holiday.dalinenails.com') === -1) {
+        var expect = function({ title, actual, expected }) {
+          return actual === expected
+            ? title + ': ✅ PASS'
+            : title + ': ❌ FAIL. Got ->> ' + actual
+        };
+        console.log(
+          expect({
+            title: 'round minutes to floor (avoids 07:60:59)',
+            expected: '07:59:59',
+            actual: CountDown(new Date(2023, 5, 28, 23, 59, 59)).tick(new Date(2023, 5, 28, 16, 0, 0))
+          })
+        );
+        console.log(
+          expect({
+            title: 'rounds minute before rendering (avoids 08:010:59)',
+            expected: '08:09:59',
+            actual: CountDown(new Date(2023, 5, 28, 23, 59, 59)).tick(new Date(2023, 5, 28, 15, 50, 0))
+          })
+        );
+        console.log(
+          expect({
+            title: 'rounds second before rendering (avoids 08:08:010)',
+            expected: '08:08:10',
+            actual: CountDown(new Date(2023, 5, 28, 23, 59, 59, 0)).tick(new Date(2023, 5, 28, 15, 51, 49, 0))
+          })
+        );
+      }
+    }());
   }());
 </script>
