@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Daline Nails Repair & Growth Influence</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+      /*
+        1. Remove shadow border for Samsung devices
+        2. Remove default border width and style for Chrome on Windows
+        4. Similar styles like standard Google Maps controls
+        5. Remove default style that Google Maps apply to buttons
+      */
+      .control-button {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        border-radius: 2px;
+        -webkit-appearance: none;
+        font-size: 1em;
+        background-color: #FFF; /* 1 */
+        border-width: 0px; /* 2 */
+        border-style: solid; /* 2 */
+        margin-right: 10px; /* 4 */
+        height: 40px; /* 4 */
+        width: 40px; /* 4 */
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; /* 4 */
+        padding-right: 0; /* 5 */
+        padding-left: 0; /* 5 */
+      }
+
+      /*
+        1. Remove shadow border for Samsung devices
+        2. Remove default border width and style for Chrome on Windows
+        3. 25 Nov 2021: After a Safari update, the time slot buttons in time slots view
+                        became bold in Chroma and Safari on iPhone. I don't know exactly
+                        why but I'm reverting the font-weight to "normal" to make sure
+                        nothing else changes the font-weight and it stays consistent with
+                        the styleguide.
+      */
+      .cta-link {
+        position: relative;
+        padding: 15px 15px 15px 15px;
+        color: #FFF;
+        border-radius: 15px;
+        margin: -1px auto;
+        display: block;
+        text-align: left;
+        border-color: #8080D7;
+        box-shadow: 3px 3px 3px 0px #dbd3ee;
+        -webkit-appearance: none;
+        font-size: 1em;
+        border-width: 1px; /* 2 */
+        border-style: solid; /* 2 */
+        background-color: #53469E; /* 1 */
+        font-weight: normal; /* 3 */
+        text-decoration: none;
+      }
+
+      .spin .content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="map"
+      data-zoom="4"
+      data-lat="-25.9792234"
+      data-lng="130.1060559",
+      data-points="{{ points }}"
+    ></div>
+    <script>
+      const q = document.querySelector.bind(document);
+      const points = JSON.parse(q('#map').dataset.points);
+
+      (function(isBrowserSupported) {
+        if (!isBrowserSupported) return;
+
+        // https://lottiefiles.com/26925-gps-satellite
+        const locationSearchingBtnImgTag = '<img src="/static/location-searching.gif">';
+        const locationButtonImgTag = '<img style="width: 18px; height: 18px; display: block; margin: auto auto;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAYFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD6T+iNAAAAH3RSTlMAoejf7RMI9dSRioM5MR3j2sWXfV1WUklEPS0nFg4NKL1nwAAAAIlJREFUGNOV0EcOwzAMRFGJVG/uvfD+t4wdK/AiQAL/5duQGPYjzv/S3hgi0+y3LKjrtq01Lh/Z0CQWI0sGt0xep7kkKuekfSa0CukIlcV8irpA70JHnF/UTxdN/UlnhVNwCihXsCsnZIBDghQuk4RKqnFUsgLJchGEHwYvIN7vr1YQCbs+WeK7F+aSCJM6Mfd2AAAAAElFTkSuQmCC">';
+
+        const createGeolocationButton = (map) => {
+          const locationButton = document.createElement('button');
+          locationButton.innerHTML = `<span class="content">${locationButtonImgTag}</span>`;
+          locationButton.classList.add('control-button');
+          return locationButton;
+        };
+
+        const Balloon = (map) => {
+          const infoWindow = new google.maps.InfoWindow();
+          const circle = new google.maps.Circle({
+            strokeColor: "rgb(79, 171, 225)",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "rgb(163, 226, 251)",
+            fillOpacity: 0.35,
+            map,
+          });
+
+          const thisBalloon = {
+            open: (position) => {
+              infoWindow.setPosition({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              });
+              infoWindow.open(map);
+
+              circle.setCenter({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              });
+              circle.setRadius(position.coords.accuracy);
+              circle.setMap(map);
+            },
+            close: () => {
+              infoWindow.close();
+              circle.setMap(null);
+            }
+          };
+
+          infoWindow.setContent(`
+            <div style="border-radius: 70px;">
+              <p>You are around here!</p>
+              ${locationButtonImgTag}
+            </<div>
+          `);
+
+          google.maps.event.addListener(map, 'click', function(event) {
+            thisBalloon.close();
+          });
+          google.maps.event.addListener(circle, 'click', function(event) {
+            thisBalloon.close();
+          });
+
+          // Closing the info window removes the circle too
+          google.maps.event.addListener(infoWindow, 'closeclick', function(event) {
+            thisBalloon.close();
+          });
+
+          return thisBalloon;
+        };
+        Balloon.create = (map, registry) => {
+          for (const registeredBalloon of registry) {
+            registeredBalloon.close();
+          }
+
+          const balloon = Balloon(map);
+          registry.push(balloon);
+
+          return balloon;
+        };
+
+        const startSpin = (button) => {
+          button.classList.add('spin');
+          button.querySelector('.content').innerHTML = locationSearchingBtnImgTag;
+        };
+
+        const stopSpin = (button) => {
+          button.classList.remove('spin');
+          button.querySelector('.content').innerHTML = locationButtonImgTag;
+        };
+
+        const ballonsRegistry = [];
+        window.initMap = () => {
+          const INITIAL_MAP_POSITION = {
+            zoom: +q('#map').dataset.zoom,
+            mapCenter: { lat: +q('#map').dataset.lat, lng: +q('#map').dataset.lng }
+          }
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: INITIAL_MAP_POSITION.zoom,
+            center: INITIAL_MAP_POSITION.mapCenter
+          });
+
+          if (navigator.geolocation) {
+            const geoLocationBtn = createGeolocationButton(map);
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(geoLocationBtn);
+            geoLocationBtn.addEventListener('click', () => {
+              startSpin(geoLocationBtn)
+              navigator.geolocation.getCurrentPosition((position) => {
+
+                map.setCenter({
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude,
+                });
+
+                // Do not zoom out Google Maps location if customer is with a zoom that's closer than before.
+                // Allows for the customer to re-check the location they're in without re-zooming the map back higher
+                if (map.getZoom() <= 13) {
+                  map.setZoom(13);
+                }
+
+                // If location is not accurate, tell the customer but still continue showing the inaccurate balloon
+                // Sometimes the area is the whole city or region, which is not very useful but helps if customer starts from the whole Australia zoom
+                if (position.coords.accuracy > 1000) {
+                  alert('Could not find your accurate location. Make sure Wifi is enabled.');
+                }
+
+                const balloon = Balloon.create(map, ballonsRegistry);
+                balloon.open(position);
+
+                stopSpin(geoLocationBtn);
+              }, (e) => {
+                alert(`Error trying to get your location: ${e.message}`);
+                stopSpin(geoLocationBtn);
+              });
+            });
+          }
+
+          new google.maps.visualization.HeatmapLayer({
+            // reduce opacity
+            opacity: 0.8,
+            data: points.map(point => {
+              return {
+                location: new google.maps.LatLng(point.latLng[0], point.latLng[1]),
+                weight: point.count
+              }
+            }),
+            map: map,
+            radius: 50
+          });
+        }
+
+        const getMapsKey = () => {
+          try {
+            // Localhost key
+            const key = location.href.split('key=')[1].split('&')[0].split('#')[0];
+            console.log('Using key:', key);
+            return key;
+          } catch(e) {
+            // Prod key
+            console.log('Using PROD key');
+            return 'AIzaSyDj5kXqfpKiF34pmONGXZqaD89mj15QQ90';
+          }
+        };
+
+        document.write(`<script async defer src="https://maps.googleapis.com/maps/api/js?key=${getMapsKey()}&libraries=visualization&callback=initMap"><\/script>`);
+      }(function() {
+        function supportsArrow() {
+          try {
+            eval('()=>{}');
+          } catch (e) {
+            return false;
+          }
+          return true;
+        }
+        function supportsAsync() {
+          try {
+            eval('async () => {}');
+            return true;
+          } catch (e) { return false }
+        }
+        function supportsTemplateLiterals() {
+          try { return eval("''===``") }
+          catch(e) { return false; }
+        }
+        function supportsClassList() {
+          return !!document.documentElement.classList;
+        }
+
+        return (
+          !!supportsArrow() &&
+          !!supportsAsync() &&
+          !!supportsTemplateLiterals() &&
+          !!supportsClassList()
+        );
+      }));
+    </script>
+  </body>
+</html>

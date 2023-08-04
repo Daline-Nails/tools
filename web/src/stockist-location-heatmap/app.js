@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const root = require('app-root-path');
+const HandleBars = require('handlebars');
 
 if (!process.env.MAXMIND_LICENSE_KEY) throw new Error('MAXMIND_LICENSE_KEY environment variable is required');
 
@@ -51,6 +52,47 @@ module.exports = () => {
 
     return ipResponse;
   };
+
+  app.get('/charts/access', (req, res) => {
+    const accessHTMLContent = fs.readFileSync(`${root}/src/stockist-location-heatmap/access.html`, { encoding: 'UTF-8' });
+    const accessTxtJSONObjects = fs.readFileSync(`${root}/access.txt`, { encoding: 'UTF-8' });
+    const lines = accessTxtJSONObjects.trim().split('\n');
+    const points = lines.reduce((acc, jsonString) => {
+      try {
+        return acc.concat(JSON.parse(jsonString));
+      } catch(e) {
+        console.log('Failed to parse', jsonString)
+        return acc;
+      }
+    }, []).reduce((acc, point) => {
+      const found = acc.find(thisPoint => thisPoint.latitude === point.latitude && thisPoint.longitude === point.longitude);
+      if (found) {
+        found.count++;
+      } else {
+        acc.push({ ...point, count: 1 });
+      }
+      return acc;
+    }, [])
+    // .filter(point => {
+    //   return (
+    //       // Sydney
+    //       !(point.latitude === -33.8715 && point.longitude === 151.2006) &&
+    //       // Northern Beaches
+    //       !(point.latitude === -33.7707 && point.longitude === 151.2495)
+    //     );
+    // })
+    .map(point => {
+      return {
+        latLng: [point.latitude, point.longitude],
+        count: point.count
+      };
+    });
+    res.send(
+      HandleBars.compile(accessHTMLContent)({
+        points: JSON.stringify(points)
+      })
+     );
+  });
 
   app.get('/charts/stockist-location-heatmap', async (req, res) => {
     const ipResponse = await fetchIPResponse(getRequestIP(req));
