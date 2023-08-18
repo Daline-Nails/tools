@@ -220,6 +220,16 @@
     ]
   },
   {
+    "name": "Priceline Bourke Street Mall",
+    "storeType": "PRICELINE",
+    "address": "Centrepoint Building, LEVEL 1/283 Bourke St, MALL VIC",
+    "addressLink": "https://www.google.com/maps/place/Priceline+Pharmacy+Bourke+Street+Mall/@-37.8137778,144.9649793,21z/data=!4m6!3m5!1s0x6ad642b58e49a5d5:0x60274156b3b827bf!8m2!3d-37.8137821!4d144.9651402!16s%2Fg%2F1vn_z2mc?entry=ttu",
+    "latLng": [
+      -37.8137778,
+      144.9649793
+    ]
+  },
+  {
     "name": "Unique Beauty & Style - Perth",
     "storeType": "OTHER",
     "address": "649 Beaufort St, Mount Lawley WA",
