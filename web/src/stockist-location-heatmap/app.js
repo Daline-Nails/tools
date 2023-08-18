@@ -61,7 +61,6 @@ module.exports = () => {
       try {
         return acc.concat(JSON.parse(jsonString));
       } catch(e) {
-        console.log('Failed to parse', jsonString)
         return acc;
       }
     }, []).reduce((acc, point) => {
